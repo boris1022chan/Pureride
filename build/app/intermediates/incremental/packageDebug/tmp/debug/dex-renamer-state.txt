@@ -1,0 +1,4 @@
+#Mon Jul 22 14:44:49 EDT 2019
+base.0=/home/borischan/Documents/Coding Projects/Flutter/pureride/build/app/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex
