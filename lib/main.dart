@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pureride/ui/screens/home.dart';
 import 'package:pureride/ui/screens/login.dart';
+import 'package:pureride/ui/theme.dart';
 
 void main() => runApp(App());
 
@@ -10,7 +11,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "PureRide",
-      initialRoute: '/',
+      theme: buildTheme(),
+      initialRoute: '/login',
       routes: {
         '/': (context) => HomeScreen(),
         '/login': (context) => LoginScreen(),

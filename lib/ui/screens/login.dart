@@ -11,8 +11,9 @@ class LoginScreen extends StatelessWidget {
     BoxDecoration _buildBackground() {
       return BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/brooke-lark-unsplash.png"),
+          image: AssetImage("assets/intersection.jpeg"),
           fit: BoxFit.cover,
+           colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.dstATop),
         ),
       );
     }
@@ -36,7 +37,7 @@ class LoginScreen extends StatelessWidget {
               SizedBox(height: 50.0),
               GoogleSignInButton(
                 // TODO
-                onPressed: () => print("hi"),
+                onPressed: () => Navigator.pushNamed(context, '/'),
               ),
             ],
           ),
