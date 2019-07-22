@@ -10,6 +10,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "PureRide",
+      initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
         '/login': (context) => LoginScreen(),
