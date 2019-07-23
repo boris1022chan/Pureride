@@ -55,14 +55,18 @@ class _StateWidgetState extends State<StateWidget> {
   }
 
   Future<Null> signInWithGoogle() async {
-    if (googleAccount == null) {
-      googleAccount = await googleSignIn.signIn();
-    }
-    FirebaseUser firebaseUser = await signIntoFirebase(googleAccount);
-    state.user = firebaseUser;
+    // if (googleAccount == null) {
+    //   googleAccount = await googleSignIn.signIn();
+    // }
+    // FirebaseUser firebaseUser = await signIntoFirebase(googleAccount);
+    // state.user = firebaseUser;
+    // setState(() {
+    //   state.isLoading = false;
+    //   state.user = firebaseUser;
+    // });
     setState(() {
       state.isLoading = false;
-      state.user = firebaseUser;
+      state.isLogin = true;
     });
   }
 
