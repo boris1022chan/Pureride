@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:pureride/models/drive_info.dart';
 
 Align createButtonBar(id, context) {
   return Align(
@@ -15,37 +16,31 @@ Align createButtonBar(id, context) {
       ));
 }
 
-Align createText(
-    BuildContext context,
-    String destinationName,
-    DateTime departureTime,
-    String driver,
-    int type,
-    List taggerAlonger,
-    double titleSize,
+Align createText(BuildContext context, DriveInfo driveInfo, double titleSize,
     double subtitleSize) {
-  if (type == 0) {
+  if (driveInfo.isOffer) {
     return Align(
       alignment: Alignment.topLeft,
       child: Material(
         child: ListTile(
-            title: Text("Driving to $destinationName",
+            title: Text("Driving to ${driveInfo.destinationName}",
                 style: TextStyle(fontSize: titleSize)),
             subtitle: Text(
-                "$driver is leaving at ${DateFormat("jm").format(departureTime)}",
+                "${driveInfo.driver} is leaving at ${DateFormat("jm").format(driveInfo.departureTime)}",
                 style: TextStyle(fontSize: subtitleSize))),
       ),
     );
   } else {
-    String requestor = taggerAlonger.elementAt(0);
+    String requestor = driveInfo.taggerAlongers.elementAt(0);
     return Align(
       alignment: Alignment.topLeft,
       child: Material(
           child: ListTile(
-              title: Text("$requestor wants a drive to $destinationName",
+              title: Text(
+                  "$requestor wants a drive to ${driveInfo.destinationName}",
                   style: TextStyle(fontSize: titleSize)),
               subtitle: Text(
-                  "Planning to leave at ${DateFormat("jm").format(departureTime)}",
+                  "Planning to leave at ${DateFormat("jm").format(driveInfo.departureTime)}",
                   style: TextStyle(fontSize: subtitleSize)))),
     );
   }

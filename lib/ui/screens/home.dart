@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pureride/models/drive_info.dart';
 import 'package:pureride/ui/screens/request.dart';
 import 'package:pureride/ui/theme.dart';
 import 'package:pureride/ui/widgets/AppBarTitle.dart';
@@ -120,29 +121,33 @@ class HomeScreenState extends State<HomeScreen>
     return Center(
         child: ListView(children: [
       InfoCard(
-          id: 1,
-          destinationName: 'Lazeez',
-          departureTime: DateTime.now(),
-          address: '23 Lazeez Dr',
-          driver: 'Tim Elgersma',
-          taggerAlongers: <String>[],
-          type: 0),
+        id: 1,
+        driveInfo: DriveInfo(
+            destinationName: 'Lazeez',
+            departureTime: DateTime.now(),
+            address: '23 Lazeez Dr',
+            driver: 'Tim Elgersma',
+            taggerAlongers: <String>[],
+            isOffer: true),
+      ),
       InfoCard(
           id: 2,
-          destinationName: 'Lazeez',
-          departureTime: DateTime.now(),
-          address: '23 Lazeez Dr',
-          driver: 'Boris Chan',
-          taggerAlongers: <String>[],
-          type: 0),
+          driveInfo: DriveInfo(
+              destinationName: 'Lazeez',
+              departureTime: DateTime.now(),
+              address: '23 Lazeez Dr',
+              driver: 'Boris Chan',
+              taggerAlongers: <String>[],
+              isOffer: true)),
       InfoCard(
           id: 3,
-          destinationName: 'Lazeez',
-          departureTime: DateTime.now(),
-          address: '23 Lazeez Dr',
-          driver: 'Willa Kong',
-          taggerAlongers: <String>[],
-          type: 0),
+          driveInfo: DriveInfo(
+              destinationName: 'Lazeez',
+              departureTime: DateTime.now(),
+              address: '23 Lazeez Dr',
+              driver: 'Willa Kong',
+              taggerAlongers: <String>[],
+              isOffer: true)),
     ]));
   }
 
@@ -151,28 +156,30 @@ class HomeScreenState extends State<HomeScreen>
         child: ListView(children: [
       InfoCard(
           id: 4,
-          destinationName: 'Lazeez',
-          departureTime: DateTime.now(),
-          address: '23 Lazeez Dr',
-          driver: '',
-          taggerAlongers: ['Dev Monkey1'],
-          type: 1),
+          driveInfo: DriveInfo(
+              destinationName: 'Lazeez',
+              departureTime: DateTime.now(),
+              address: '23 Lazeez Dr',
+              driver: '',
+              taggerAlongers: ['Dev Monkey1'],
+              isOffer: false)),
       InfoCard(
-          id: 5,
-          destinationName: 'Lazeez',
-          departureTime: DateTime.now(),
-          address: '23 Lazeez Dr',
-          driver: '',
-          taggerAlongers: ['Dev Monkey2'],
-          type: 1),
+          driveInfo: DriveInfo(
+              destinationName: 'Lazeez',
+              departureTime: DateTime.now(),
+              address: '23 Lazeez Dr',
+              driver: '',
+              taggerAlongers: ['Dev Monkey2'],
+              isOffer: false)),
       InfoCard(
           id: 6,
-          destinationName: 'Lazeez',
-          departureTime: DateTime.now(),
-          address: '23 Lazeez Dr',
-          driver: '',
-          taggerAlongers: ['Dev Monkey3'],
-          type: 1),
+          driveInfo: DriveInfo(
+              destinationName: 'Lazeez',
+              departureTime: DateTime.now(),
+              address: '23 Lazeez Dr',
+              driver: '',
+              taggerAlongers: ['Dev Monkey3'],
+              isOffer: false)),
     ]));
   }
 
