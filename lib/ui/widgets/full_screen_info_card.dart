@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:pureride/ui/widgets/buttons.dart';
 
 class FullScreenInfoCard extends StatelessWidget {
   final int id;
+  final BuildContext context;
+  final String destinationName;
+  final String address;
+  final DateTime departureTime;
 
-  const FullScreenInfoCard({Key key, this.id}) : super(key: key);
+  const FullScreenInfoCard(
+      {Key key,
+      this.id,
+      this.context,
+      this.destinationName,
+      this.address,
+      this.departureTime})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     AppBar appBar = new AppBar(
-      primary: false,
+      primary: true,
       leading: IconTheme(
           data: IconThemeData(color: Colors.white), child: CloseButton()),
       flexibleSpace: Container(
@@ -27,41 +39,30 @@ class FullScreenInfoCard extends StatelessWidget {
     );
     final MediaQueryData mediaQuery = MediaQuery.of(context);
 
-    return Container(
-      child: Stack(children: <Widget>[
-        Hero(
-          tag: "card$id",
-          child: Material(
-            child: Column(
-              children: <Widget>[
-                // AspectRatio(
-                //   aspectRatio: MediaQuery.of(context).devicePixelRatio,
-                //   child:
-                //       Image.network("https://picsum.photos/485/384?image=$id"),
-                // ),
-                Material(
-                  child: ListTile(
-                    title: Text("Item $id"),
-                    subtitle: Text("This is item #$id"),
-                  ),
-                ),
-              ],
-            ),
+    return Stack(children: <Widget>[
+      Hero(
+        tag: "card$id",
+        child: Material(
+          child: ListView(
+            children: <Widget>[
+              Container(height: appBar.preferredSize.height),
+              createText(this.context, this.destinationName, this.departureTime),
+              createButtonBar(this.id, this.context)
+            ],
           ),
         ),
-        Column(
-          children: <Widget>[
-            Container(
-              height: mediaQuery.padding.top,
-            ),
-            ConstrainedBox(
-              constraints:
-                  BoxConstraints(maxHeight: appBar.preferredSize.height),
-              child: appBar,
-            )
-          ],
-        ),
-      ]),
-    );
+      ),
+      Column(
+        children: <Widget>[
+          Container(
+            height: mediaQuery.padding.top,
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: appBar.preferredSize.height),
+            child: appBar,
+          )
+        ],
+      ),
+    ]);
   }
 }
