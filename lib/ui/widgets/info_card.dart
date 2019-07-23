@@ -8,6 +8,8 @@ class InfoCard extends StatelessWidget {
   final String address;
   final DateTime departureTime;
   final String driver;
+  final List taggerAlongers;
+  final int type;
 
   const InfoCard(
       {Key key,
@@ -15,15 +17,13 @@ class InfoCard extends StatelessWidget {
       this.destinationName,
       this.address,
       this.departureTime,
-      this.driver})
+      this.driver,
+      this.taggerAlongers,
+      this.type})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    final Widget textDescription = createText(context, destinationName, departureTime, driver);
-    final Widget buttonBar = createButtonBar(id, context);
-
     return Hero(
       tag: "card$id",
       child: Card(
@@ -32,16 +32,17 @@ class InfoCard extends StatelessWidget {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Stack(
           children: <Widget>[
-            textDescription,
-            createInkwell(context, textDescription, buttonBar),
-            buttonBar
+            createText(
+                context, this.destinationName, this.departureTime, this.driver, this.type, this.taggerAlongers),
+            createInkwell(context),
+            createButtonBar(id, context)
           ],
         ),
       ),
     );
   }
 
-  Positioned createInkwell(BuildContext context, Widget textDescription, Widget buttonBar) {
+  Positioned createInkwell(BuildContext context) {
     return Positioned(
       left: 0.0,
       top: 0.0,
@@ -62,9 +63,7 @@ class InfoCard extends StatelessWidget {
                         destinationName: this.destinationName,
                         address: this.address,
                         departureTime: this.departureTime,
-                        driver: this.driver,
-                        textDescription: textDescription,
-                        buttonBar: buttonBar);
+                        driver: this.driver);
                   },
                 ),
               );

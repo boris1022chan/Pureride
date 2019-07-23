@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pureride/ui/theme.dart';
 import 'package:pureride/ui/widgets/info_card.dart';
 
 import '../../models/state.dart';
@@ -14,16 +13,6 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenState extends State<HomeScreen> {
   StateModel appState;
 
-  Widget buildAppBarTab(String str) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Text(
-        str,
-        style: buildAppBarStyle(),
-      ),
-    );
-  }
-
   DefaultTabController _buildTabView({Widget body}) {
     const double _iconSize = 20.0;
 
@@ -32,25 +21,12 @@ class HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
             elevation: 2.0,
-            title: Row(
-              children: <Widget>[
-                Image.asset(
-                  'assets/logo.png',
-                  fit: BoxFit.contain,
-                  height: 32
-                ),
-                SizedBox(width: 5.0),
-                Text(
-                  "PureRide",
-                  style: Theme.of(context).textTheme.title,
-                ),
-              ],
-            ),
+            title: Text("PureRide"),
             bottom: TabBar(
               labelColor: Theme.of(context).indicatorColor,
               tabs: [
-                buildAppBarTab("Drivers"),
-                buildAppBarTab("Requests"),
+                Text("Drivers"),
+                Text("Requests"),
               ],
             )),
         body: TabBarView(
@@ -91,24 +67,57 @@ class HomeScreenState extends State<HomeScreen> {
           destinationName: 'Lazeez',
           departureTime: DateTime.now(),
           address: '23 Lazeez Dr',
-          driver: 'Tim Elgersma'),
+          driver: 'Tim Elgersma',
+          taggerAlongers: <String>[],
+          type: 0),
       InfoCard(
           id: 2,
           destinationName: 'Lazeez',
           departureTime: DateTime.now(),
           address: '23 Lazeez Dr',
-          driver: 'Boris Chan'),
+          driver: 'Boris Chan',
+          taggerAlongers: <String>[],
+          type: 0),
       InfoCard(
           id: 3,
           destinationName: 'Lazeez',
           departureTime: DateTime.now(),
           address: '23 Lazeez Dr',
-          driver: 'Willa Kong'),
+          driver: 'Willa Kong',
+          taggerAlongers: <String>[],
+          type: 0),
     ]));
   }
 
   Widget _buildRequestTab() {
-    return Center(child: Text("REQUESTS"));
+    return Center(
+      child: ListView(children: [
+      InfoCard(
+          id: 1,
+          destinationName: 'Lazeez',
+          departureTime: DateTime.now(),
+          address: '23 Lazeez Dr',
+          driver: '',
+          taggerAlongers: ['Dev Monkey1'],
+          type: 1),
+      InfoCard(
+          id: 2,
+          destinationName: 'Lazeez',
+          departureTime: DateTime.now(),
+          address: '23 Lazeez Dr',
+          driver: '',
+          taggerAlongers: ['Dev Monkey2'],
+          type: 1),
+      InfoCard(
+          id: 3,
+          destinationName: 'Lazeez',
+          departureTime: DateTime.now(),
+          address: '23 Lazeez Dr',
+          driver: '',
+          taggerAlongers: ['Dev Monkey3'],
+          type: 1),
+    ])
+    );
   }
 
   @override

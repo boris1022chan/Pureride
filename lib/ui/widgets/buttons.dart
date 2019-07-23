@@ -16,16 +16,31 @@ Align createButtonBar(id, context) {
 }
 
 Align createText(BuildContext context, String destinationName,
-    DateTime departureTime, String driver) {
-  return Align(
-    alignment: Alignment.topLeft,
-    child: Material(
-      child: ListTile(
-          title: Text("Driving to $destinationName"),
-          subtitle: Text(
-              "$driver is leaving at ${DateFormat("jm").format(departureTime)}")),
-    ),
-  );
+    DateTime departureTime, String driver, int type, List taggerAlonger) {
+      if(type == 0){
+        return Align(
+              alignment: Alignment.topLeft,
+              child: Material(
+                child: ListTile(
+                    title: Text("Driving to $destinationName"),
+                    subtitle: Text(
+                        "$driver is leaving at ${DateFormat("jm").format(departureTime)}")),
+              ),
+            );
+      }
+      else{
+        String requestor = taggerAlonger[0];
+        return Align(
+              alignment: Alignment.topLeft,
+              child: Material(
+                child: ListTile(
+                    title: Text("$requestor wants a drive to $destinationName"),
+                    subtitle: Text(
+                        "Planning to leave at ${DateFormat("jm").format(departureTime)}")),
+              ),
+            );
+      }
+    
 }
 
 Widget createAddMeButton(int id, BuildContext context) {
