@@ -5,6 +5,9 @@ import '../../models/state.dart';
 import '../../state_widget.dart';
 import 'login.dart';
 
+import '../data_demo/note_screen.dart';
+import '../data_demo/listview_note.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new HomeScreenState();
@@ -17,6 +20,7 @@ class HomeScreenState extends State<HomeScreen> {
     const double _iconSize = 20.0;
 
     return DefaultTabController(
+
       length: 2,
       child: Scaffold(
         appBar: AppBar(
@@ -31,8 +35,11 @@ class HomeScreenState extends State<HomeScreen> {
             )),
         body: TabBarView(
           children: <Widget>[
-            _buildDriverTab(),
-            _buildRequestTab()
+            ListViewNote(),
+            ListViewNote(),
+            //_buildDriverTab(),
+            //_buildRequestTab()
+
           ],
         )
       ),
