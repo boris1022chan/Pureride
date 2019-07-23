@@ -31,16 +31,20 @@ class HomeScreenState extends State<HomeScreen> {
             )),
         body: Padding(
           padding: EdgeInsets.all(5.0),
-          child: Center(child: ListView(
-            children: [
-              InfoCard(id: 1, destinationName: 'Lazeez', departureTime: TimeOfDay.now(), address: '23 Lazeez Dr'),
-              InfoCard(id: 2, destinationName: 'Lazeez', departureTime: TimeOfDay.now(), address: '23 Lazeez Dr'),
-              InfoCard(id: 3, destinationName: 'Lazeez', departureTime: TimeOfDay.now(), address: '23 Lazeez Dr'),
-            ]
-          )),
+          child: _createCards(),
         ),
       ),
     );
+  }
+
+  Widget _createCards() {
+    return Center(child: ListView(
+      children: [
+        InfoCard(id: 1, destinationName: 'Lazeez', departureTime: DateTime.now(), address: '23 Lazeez Dr'),
+        InfoCard(id: 2, destinationName: 'Lazeez', departureTime: DateTime.now(), address: '23 Lazeez Dr'),
+        InfoCard(id: 3, destinationName: 'Lazeez', departureTime: DateTime.now(), address: '23 Lazeez Dr'),
+      ]
+    ));
   }
 
   Widget _buildContent() {

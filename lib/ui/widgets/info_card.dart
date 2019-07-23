@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:pureride/ui/widgets/full_screen_info_card.dart';
 
 class InfoCard extends StatelessWidget {
   final int id;
   final String destinationName;
   final String address;
-  final TimeOfDay departureTime;
+  final DateTime departureTime;
 
   const InfoCard(
       {Key key,
@@ -25,33 +26,40 @@ class InfoCard extends StatelessWidget {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Stack(
           children: <Widget>[
-            Column(
-              children: <Widget>[
-                Material(
-                  child: ListTile(
-                      title: Text("Driving to $destinationName"),
-                      subtitle: Text(
-                          "Leaving at ${departureTime.hourOfPeriod}:${departureTime.minute}${departureTime.period.index == 0 ? "a" : "p"}")),
-                ),
-              ],
-            ),
-            createHeroPosition(context)
+            createText(context),
+            createInkwell(context),
+            createButtonBar(context)
           ],
         ),
       ),
     );
   }
 
-  Widget createButtonBar(context) {
-    return ButtonTheme.bar(
-      child: new ButtonBar(
-        alignment: MainAxisAlignment.end,
-        children: <Widget>[AddMeButton(id: id), MessageButton(id: id)],
+  Align createButtonBar(context) {
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: ButtonTheme.bar(
+        child: new ButtonBar(
+          alignment: MainAxisAlignment.end,
+          children: <Widget>[AddMeButton(id: id), MessageButton(id: id)],
+        ),
+      )
+    );
+  }
+
+  Align createText(BuildContext context) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Material(
+        child: ListTile(
+            title: Text("Driving to $destinationName"),
+            subtitle: Text(
+                "Leaving at ${DateFormat("jm").format(this.departureTime)}")),
       ),
     );
   }
 
-  Positioned createHeroPosition(BuildContext context) {
+  Positioned createInkwell(BuildContext context) {
     return Positioned(
       left: 0.0,
       top: 0.0,
@@ -59,21 +67,19 @@ class InfoCard extends StatelessWidget {
       right: 0.0,
       child: Material(
           type: MaterialType.transparency,
-          child: Column(children: [
-            InkWell(
-              onTap: () async {
-                await Future.delayed(Duration(milliseconds: 200));
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return new FullScreenInfoCard(id: id);
-                    },
-                  ),
-                );
-              },
-            )
-          ])),
+          child: InkWell(
+            onTap: () async {
+              await Future.delayed(Duration(milliseconds: 200));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return new FullScreenInfoCard(id: id);
+                  },
+                ),
+              );
+            },
+          )),
     );
   }
 }
