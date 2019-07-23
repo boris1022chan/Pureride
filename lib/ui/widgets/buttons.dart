@@ -16,7 +16,7 @@ Align createButtonBar(id, context) {
 }
 
 Align createText(BuildContext context, String destinationName,
-    DateTime departureTime, String driver, int type, List taggerAlonger) {
+    DateTime departureTime, String driver, int type, List taggerAlongers) {
       if(type == 0){
         return Align(
               alignment: Alignment.topLeft,
@@ -29,7 +29,7 @@ Align createText(BuildContext context, String destinationName,
             );
       }
       else{
-        String requestor = taggerAlonger[0];
+        String requestor = taggerAlongers.elementAt(0);
         return Align(
               alignment: Alignment.topLeft,
               child: Material(

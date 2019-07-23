@@ -63,7 +63,9 @@ class InfoCard extends StatelessWidget {
                         destinationName: this.destinationName,
                         address: this.address,
                         departureTime: this.departureTime,
-                        driver: this.driver);
+                        driver: this.driver,
+                        type: this.type,
+                        taggerAlongers: this.taggerAlongers);
                   },
                 ),
               );
