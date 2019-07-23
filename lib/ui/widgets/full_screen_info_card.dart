@@ -52,16 +52,15 @@ class FullScreenInfoCard extends StatelessWidget {
         child: Material(
           child: ListView(
             children: <Widget>[
-              Container(height: appBar.preferredSize.height),
+              // Container(height: appBar.preferredSize.height),
               Container(
-                margin: EdgeInsets.only(top: mediaQuery.padding.top),
                 child: createText(context, destinationName, departureTime,
                     driver, type, taggerAlongers, 18, 14),
               ),
               ConstrainedBox(
                   constraints: BoxConstraints.loose(Size(
                       mediaQuery.size.width * 0.8,
-                      mediaQuery.size.height * 0.8)),
+                      mediaQuery.size.height * 0.75)),
                   // margin: EdgeInsets.only(top: 100, left: 50),
                   child: Container(
                       child: ListView(
@@ -78,7 +77,8 @@ class FullScreenInfoCard extends StatelessWidget {
                           )
                         ],
                       ),
-                      padding: EdgeInsets.only(top: 80))),
+                      // padding: EdgeInsets.only(top: 80)
+                      )),
               buttonBar
             ],
           ),
