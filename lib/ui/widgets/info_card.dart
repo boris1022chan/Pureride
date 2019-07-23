@@ -24,25 +24,27 @@ class InfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Widget textDescription = createText(context, destinationName,
+        departureTime, driver, type, taggerAlongers, 14, 12);
+    final Widget buttonBar = createButtonBar(id, context);
+
     return Hero(
-      tag: "card$id",
-      child: Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8.0))),
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        child: Stack(
-          children: <Widget>[
-            createText(
-                context, this.destinationName, this.departureTime, this.driver, this.type, this.taggerAlongers),
-            createInkwell(context),
-            createButtonBar(id, context)
-          ],
-        ),
-      ),
-    );
+        tag: 'hero$id-card',
+        child: Card(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8.0))),
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          child: Stack(
+            children: <Widget>[
+              textDescription,
+              createInkwell(context, buttonBar),
+              buttonBar
+            ],
+          ),
+        ));
   }
 
-  Positioned createInkwell(BuildContext context) {
+  Positioned createInkwell(BuildContext context, Widget buttonBar) {
     return Positioned(
       left: 0.0,
       top: 0.0,
@@ -63,7 +65,8 @@ class InfoCard extends StatelessWidget {
                         destinationName: this.destinationName,
                         address: this.address,
                         departureTime: this.departureTime,
-                        driver: this.driver);
+                        driver: this.driver,
+                        buttonBar: buttonBar);
                   },
                 ),
               );

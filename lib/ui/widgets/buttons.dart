@@ -15,32 +15,40 @@ Align createButtonBar(id, context) {
       ));
 }
 
-Align createText(BuildContext context, String destinationName,
-    DateTime departureTime, String driver, int type, List taggerAlonger) {
-      if(type == 0){
-        return Align(
-              alignment: Alignment.topLeft,
-              child: Material(
-                child: ListTile(
-                    title: Text("Driving to $destinationName"),
-                    subtitle: Text(
-                        "$driver is leaving at ${DateFormat("jm").format(departureTime)}")),
-              ),
-            );
-      }
-      else{
-        String requestor = taggerAlonger[0];
-        return Align(
-              alignment: Alignment.topLeft,
-              child: Material(
-                child: ListTile(
-                    title: Text("$requestor wants a drive to $destinationName"),
-                    subtitle: Text(
-                        "Planning to leave at ${DateFormat("jm").format(departureTime)}")),
-              ),
-            );
-      }
-    
+Align createText(
+    BuildContext context,
+    String destinationName,
+    DateTime departureTime,
+    String driver,
+    int type,
+    List taggerAlonger,
+    double titleSize,
+    double subtitleSize) {
+  if (type == 0) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Material(
+        child: ListTile(
+            title: Text("Driving to $destinationName",
+                style: TextStyle(fontSize: titleSize)),
+            subtitle: Text(
+                "$driver is leaving at ${DateFormat("jm").format(departureTime)}",
+                style: TextStyle(fontSize: subtitleSize))),
+      ),
+    );
+  } else {
+    String requestor = taggerAlonger[0];
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Material(
+          child: ListTile(
+              title: Text("$requestor wants a drive to $destinationName",
+                  style: TextStyle(fontSize: titleSize)),
+              subtitle: Text(
+                  "Planning to leave at ${DateFormat("jm").format(departureTime)}",
+                  style: TextStyle(fontSize: subtitleSize)))),
+    );
+  }
 }
 
 Widget createAddMeButton(int id, BuildContext context) {
