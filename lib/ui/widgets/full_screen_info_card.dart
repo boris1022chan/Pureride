@@ -8,6 +8,8 @@ class FullScreenInfoCard extends StatelessWidget {
   final String address;
   final DateTime departureTime;
   final String driver;
+  final Widget buttonBar;
+  final Widget textDescription;
 
   const FullScreenInfoCard(
       {Key key,
@@ -16,7 +18,9 @@ class FullScreenInfoCard extends StatelessWidget {
       this.destinationName,
       this.address,
       this.departureTime,
-      this.driver})
+      this.driver,
+      this.textDescription,
+      this.buttonBar})
       : super(key: key);
 
   @override
@@ -45,12 +49,11 @@ class FullScreenInfoCard extends StatelessWidget {
       Hero(
         tag: "card$id",
         child: Material(
-          child: ListView(
+          child: Stack(
             children: <Widget>[
               Container(height: appBar.preferredSize.height),
-              createText(this.context, this.destinationName, this.departureTime,
-                  this.driver),
-              createButtonBar(this.id, this.context)
+              textDescription,
+              buttonBar
             ],
           ),
         ),

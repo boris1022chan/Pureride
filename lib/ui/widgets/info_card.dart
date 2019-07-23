@@ -20,6 +20,10 @@ class InfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final Widget textDescription = createText(context, destinationName, departureTime, driver);
+    final Widget buttonBar = createButtonBar(id, context);
+
     return Hero(
       tag: "card$id",
       child: Card(
@@ -28,17 +32,16 @@ class InfoCard extends StatelessWidget {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Stack(
           children: <Widget>[
-            createText(
-                context, this.destinationName, this.departureTime, this.driver),
-            createInkwell(context),
-            createButtonBar(id, context)
+            textDescription,
+            createInkwell(context, textDescription, buttonBar),
+            buttonBar
           ],
         ),
       ),
     );
   }
 
-  Positioned createInkwell(BuildContext context) {
+  Positioned createInkwell(BuildContext context, Widget textDescription, Widget buttonBar) {
     return Positioned(
       left: 0.0,
       top: 0.0,
@@ -59,7 +62,9 @@ class InfoCard extends StatelessWidget {
                         destinationName: this.destinationName,
                         address: this.address,
                         departureTime: this.departureTime,
-                        driver: this.driver);
+                        driver: this.driver,
+                        textDescription: textDescription,
+                        buttonBar: buttonBar);
                   },
                 ),
               );
