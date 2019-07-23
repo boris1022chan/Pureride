@@ -69,12 +69,10 @@ class InfoCard extends StatelessWidget {
                     builder: (context) {
                       return new FullScreenInfoCard(id: id);
                     },
-                    fullscreenDialog: true,
                   ),
                 );
               },
-            ),
-            createButtonBar(context)
+            )
           ])),
     );
   }

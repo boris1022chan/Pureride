@@ -27,41 +27,41 @@ class FullScreenInfoCard extends StatelessWidget {
     );
     final MediaQueryData mediaQuery = MediaQuery.of(context);
 
-    return Stack(children: <Widget>[
-      Hero(
-        tag: "card$id",
-        child: Material(
-          child: Column(
-            children: <Widget>[
-              AspectRatio(
-                aspectRatio: MediaQuery.of(context).devicePixelRatio,
-                child:
-                    Image.network("https://picsum.photos/485/384?image=$id"),
-              ),
-              Material(
-                child: ListTile(
-                  title: Text("Item $id"),
-                  subtitle: Text("This is item #$id"),
+    return Container(
+      child: Stack(children: <Widget>[
+        Hero(
+          tag: "card$id",
+          child: Material(
+            child: Column(
+              children: <Widget>[
+                // AspectRatio(
+                //   aspectRatio: MediaQuery.of(context).devicePixelRatio,
+                //   child:
+                //       Image.network("https://picsum.photos/485/384?image=$id"),
+                // ),
+                Material(
+                  child: ListTile(
+                    title: Text("Item $id"),
+                    subtitle: Text("This is item #$id"),
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Center(child: Text("Some more content goes here!")),
-              )
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-      Column(
-        children: <Widget>[
-          Container(
-            height: mediaQuery.padding.top,
-          ),
-          ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: appBar.preferredSize.height),
-            child: appBar,
-          )
-        ],
-      ),
-    ]);
+        Column(
+          children: <Widget>[
+            Container(
+              height: mediaQuery.padding.top,
+            ),
+            ConstrainedBox(
+              constraints:
+                  BoxConstraints(maxHeight: appBar.preferredSize.height),
+              child: appBar,
+            )
+          ],
+        ),
+      ]),
+    );
   }
 }
