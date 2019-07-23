@@ -29,22 +29,14 @@ class HomeScreenState extends State<HomeScreen> {
                 Text("Requests"),
               ],
             )),
-        body: Padding(
-          padding: EdgeInsets.all(5.0),
-          child: _createCards(),
-        ),
+        body: TabBarView(
+          children: <Widget>[
+            _buildDriverTab(),
+            _buildRequestTab()
+          ],
+        )
       ),
     );
-  }
-
-  Widget _createCards() {
-    return Center(child: ListView(
-      children: [
-        InfoCard(id: 1, destinationName: 'Lazeez', departureTime: DateTime.now(), address: '23 Lazeez Dr'),
-        InfoCard(id: 2, destinationName: 'Lazeez', departureTime: DateTime.now(), address: '23 Lazeez Dr'),
-        InfoCard(id: 3, destinationName: 'Lazeez', departureTime: DateTime.now(), address: '23 Lazeez Dr'),
-      ]
-    ));
   }
 
   Widget _buildContent() {
@@ -65,6 +57,20 @@ class HomeScreenState extends State<HomeScreen> {
     return Center(
       child: new CircularProgressIndicator(),
     );
+  }
+
+  Widget _buildDriverTab() {
+    return Center(child: ListView(
+      children: [
+        InfoCard(id: 1, destinationName: 'Lazeez', departureTime: DateTime.now(), address: '23 Lazeez Dr'),
+        InfoCard(id: 2, destinationName: 'Lazeez', departureTime: DateTime.now(), address: '23 Lazeez Dr'),
+        InfoCard(id: 3, destinationName: 'Lazeez', departureTime: DateTime.now(), address: '23 Lazeez Dr'),
+      ]
+    ));
+  }
+
+  Widget _buildRequestTab() {
+    return Center(child: Text("REQUESTS"));
   }
 
   @override
