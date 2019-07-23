@@ -55,6 +55,7 @@ Widget createAddMeButton(int id, BuildContext context) {
     color: Color.fromRGBO(68, 153, 213, 1.0),
     shape: CircleBorder(),
     onPressed: () {
+      Scaffold.of(context).hideCurrentSnackBar();
       final snackbar = SnackBar(
         content: Text('Added yourself!'),
       );
@@ -72,6 +73,7 @@ Widget createMessageButton(int id, BuildContext context) {
     color: Color.fromRGBO(68, 153, 213, 1.0),
     shape: CircleBorder(),
     onPressed: () {
+      Scaffold.of(context).hideCurrentSnackBar();
       final snackbar = SnackBar(
         content: Text('Messaged!'),
       );
