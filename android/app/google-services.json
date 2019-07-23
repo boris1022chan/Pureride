@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "549117012432",
+    "firebase_url": "https://pureride-56f22.firebaseio.com",
+    "project_id": "pureride-56f22",
+    "storage_bucket": "pureride-56f22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549117012432:android:f5ff57bdd7455d60",
+        "android_client_info": {
+          "package_name": "com.genesys.pureride"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549117012432-e55iba1rfemhqhre62hgj21c91kl8egt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVpwe1_OTNmNV_tJbbuSWtO_HGHs4jJGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549117012432-e55iba1rfemhqhre62hgj21c91kl8egt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
