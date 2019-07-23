@@ -93,7 +93,7 @@ class HomeScreenState extends State<HomeScreen> {
     return Center(
       child: ListView(children: [
       InfoCard(
-          id: 1,
+          id: 4,
           destinationName: 'Lazeez',
           departureTime: DateTime.now(),
           address: '23 Lazeez Dr',
@@ -101,7 +101,7 @@ class HomeScreenState extends State<HomeScreen> {
           taggerAlongers: ['Dev Monkey1'],
           type: 1),
       InfoCard(
-          id: 2,
+          id: 5,
           destinationName: 'Lazeez',
           departureTime: DateTime.now(),
           address: '23 Lazeez Dr',
@@ -109,7 +109,7 @@ class HomeScreenState extends State<HomeScreen> {
           taggerAlongers: ['Dev Monkey2'],
           type: 1),
       InfoCard(
-          id: 3,
+          id: 6,
           destinationName: 'Lazeez',
           departureTime: DateTime.now(),
           address: '23 Lazeez Dr',

@@ -37,7 +37,7 @@ Align createText(
       ),
     );
   } else {
-    String requestor = taggerAlonger[0];
+    String requestor = taggerAlonger.elementAt(0);
     return Align(
       alignment: Alignment.topLeft,
       child: Material(
