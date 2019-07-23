@@ -45,30 +45,39 @@ class FullScreenInfoCard extends StatelessWidget {
     );
     final MediaQueryData mediaQuery = MediaQuery.of(context);
 
-    return Stack(children: <Widget>[
-      Hero(
-        tag: "card$id",
+    return Hero(
+        tag: 'hero$id-card',
         child: Material(
           child: Stack(
             children: <Widget>[
-              Container(height: appBar.preferredSize.height),
-              textDescription,
+              Container(
+                margin: EdgeInsets.only(top: mediaQuery.padding.top),
+                child: createText(context, destinationName, departureTime, driver, 18, 14),
+              ),
+              ConstrainedBox(
+                constraints: BoxConstraints.loose(Size(mediaQuery.size.width * 0.8, mediaQuery.size.height * 0.8)),
+                // margin: EdgeInsets.only(top: 100, left: 50),
+                child: Container(
+                  child: ListView(
+                    children: <Widget>[
+                      ListTile(
+                        title: Text("Riders"),
+                        subtitle: Text("Willa Kong\nMarc Xu\nOlivia Zhou\nBoris Chan\nTimothy Elgersma"),
+                            isThreeLine: true,
+                      ),
+                      ListTile(
+                        title: Text("Duration"),
+                        subtitle: Text("15 minutes"),
+                      )
+
+                    ],
+                  ),
+                  padding: EdgeInsets.only(top: 80)
+                )
+              ),
               buttonBar
             ],
           ),
-        ),
-      ),
-      Column(
-        children: <Widget>[
-          Container(
-            height: mediaQuery.padding.top,
-          ),
-          ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: appBar.preferredSize.height),
-            child: appBar,
-          )
-        ],
-      ),
-    ]);
+        ));
   }
 }

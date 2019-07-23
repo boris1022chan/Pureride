@@ -21,11 +21,11 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final Widget textDescription = createText(context, destinationName, departureTime, driver);
+    final Widget textDescription = createText(context, destinationName, departureTime, driver, 14, 12);
     final Widget buttonBar = createButtonBar(id, context);
 
     return Hero(
-      tag: "card$id",
+      tag: 'hero$id-card',
       child: Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(8.0))),
@@ -37,7 +37,7 @@ class InfoCard extends StatelessWidget {
             buttonBar
           ],
         ),
-      ),
+      )
     );
   }
 

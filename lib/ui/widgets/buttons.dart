@@ -16,14 +16,16 @@ Align createButtonBar(id, context) {
 }
 
 Align createText(BuildContext context, String destinationName,
-    DateTime departureTime, String driver) {
+    DateTime departureTime, String driver, double titleSize, double subtitleSize) {
   return Align(
     alignment: Alignment.topLeft,
     child: Material(
       child: ListTile(
-          title: Text("Driving to $destinationName"),
+          title: Text("Driving to $destinationName",
+              style: TextStyle(fontSize: titleSize)),
           subtitle: Text(
-              "$driver is leaving at ${DateFormat("jm").format(departureTime)}")),
+              "$driver is leaving at ${DateFormat("jm").format(departureTime)}",
+              style: TextStyle(fontSize: subtitleSize))),
     ),
   );
 }
