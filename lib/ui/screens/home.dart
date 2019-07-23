@@ -51,6 +51,8 @@ class HomeScreenState extends State<HomeScreen> {
     // TODO: wait till firebase auth works
     // else if (!appState.isLoading && appState.user == null)
     //   return LoginScreen();
+    else if (!appState.isLoading && !appState.isLogin)
+      return LoginScreen();
     else
       return _buildTabView(body: Text("hi"));
   }
