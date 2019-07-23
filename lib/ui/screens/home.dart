@@ -60,13 +60,27 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildDriverTab() {
-    return Center(child: ListView(
-      children: [
-        InfoCard(id: 1, destinationName: 'Lazeez', departureTime: DateTime.now(), address: '23 Lazeez Dr'),
-        InfoCard(id: 2, destinationName: 'Lazeez', departureTime: DateTime.now(), address: '23 Lazeez Dr'),
-        InfoCard(id: 3, destinationName: 'Lazeez', departureTime: DateTime.now(), address: '23 Lazeez Dr'),
-      ]
-    ));
+    return Center(
+        child: ListView(children: [
+      InfoCard(
+          id: 1,
+          destinationName: 'Lazeez',
+          departureTime: DateTime.now(),
+          address: '23 Lazeez Dr',
+          driver: 'Tim Elgersma'),
+      InfoCard(
+          id: 2,
+          destinationName: 'Lazeez',
+          departureTime: DateTime.now(),
+          address: '23 Lazeez Dr',
+          driver: 'Boris Chan'),
+      InfoCard(
+          id: 3,
+          destinationName: 'Lazeez',
+          departureTime: DateTime.now(),
+          address: '23 Lazeez Dr',
+          driver: 'Willa Kong'),
+    ]));
   }
 
   Widget _buildRequestTab() {

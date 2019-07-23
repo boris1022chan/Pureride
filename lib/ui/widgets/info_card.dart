@@ -7,13 +7,15 @@ class InfoCard extends StatelessWidget {
   final String destinationName;
   final String address;
   final DateTime departureTime;
+  final String driver;
 
   const InfoCard(
       {Key key,
       this.id,
       this.destinationName,
       this.address,
-      this.departureTime})
+      this.departureTime,
+      this.driver})
       : super(key: key);
 
   @override
@@ -26,7 +28,8 @@ class InfoCard extends StatelessWidget {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Stack(
           children: <Widget>[
-            createText(context, this.destinationName, this.departureTime),
+            createText(
+                context, this.destinationName, this.departureTime, this.driver),
             createInkwell(context),
             createButtonBar(id, context)
           ],
@@ -55,7 +58,8 @@ class InfoCard extends StatelessWidget {
                         context: context,
                         destinationName: this.destinationName,
                         address: this.address,
-                        departureTime: this.departureTime);
+                        departureTime: this.departureTime,
+                        driver: this.driver);
                   },
                 ),
               );

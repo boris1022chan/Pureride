@@ -3,25 +3,27 @@ import 'package:intl/intl.dart';
 
 Align createButtonBar(id, context) {
   return Align(
-    alignment: Alignment.bottomRight,
-    child: ButtonTheme.bar(
-      child: new ButtonBar(
-        alignment: MainAxisAlignment.end,
-        children: <Widget>[createAddMeButton(id, context), createMessageButton(id, context)],
-      ),
-    )
-  );
+      alignment: Alignment.bottomRight,
+      child: ButtonTheme.bar(
+        child: new ButtonBar(
+          alignment: MainAxisAlignment.end,
+          children: <Widget>[
+            createAddMeButton(id, context),
+            createMessageButton(id, context)
+          ],
+        ),
+      ));
 }
 
-Align createText(
-    BuildContext context, String destinationName, DateTime departureTime) {
+Align createText(BuildContext context, String destinationName,
+    DateTime departureTime, String driver) {
   return Align(
     alignment: Alignment.topLeft,
     child: Material(
       child: ListTile(
           title: Text("Driving to $destinationName"),
-          subtitle:
-              Text("Leaving at ${DateFormat("jm").format(departureTime)}")),
+          subtitle: Text(
+              "$driver is leaving at ${DateFormat("jm").format(departureTime)}")),
     ),
   );
 }

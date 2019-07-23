@@ -7,6 +7,7 @@ class FullScreenInfoCard extends StatelessWidget {
   final String destinationName;
   final String address;
   final DateTime departureTime;
+  final String driver;
 
   const FullScreenInfoCard(
       {Key key,
@@ -14,7 +15,8 @@ class FullScreenInfoCard extends StatelessWidget {
       this.context,
       this.destinationName,
       this.address,
-      this.departureTime})
+      this.departureTime,
+      this.driver})
       : super(key: key);
 
   @override
@@ -46,7 +48,8 @@ class FullScreenInfoCard extends StatelessWidget {
           child: ListView(
             children: <Widget>[
               Container(height: appBar.preferredSize.height),
-              createText(this.context, this.destinationName, this.departureTime),
+              createText(this.context, this.destinationName, this.departureTime,
+                  this.driver),
               createButtonBar(this.id, this.context)
             ],
           ),
