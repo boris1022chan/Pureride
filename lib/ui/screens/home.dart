@@ -9,6 +9,9 @@ import '../../models/state.dart';
 import '../../state_widget.dart';
 import 'login.dart';
 
+import '../data_demo/note_screen.dart';
+
+
 class HomeScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new HomeScreenState();
@@ -56,8 +59,10 @@ class HomeScreenState extends State<HomeScreen>
           labelColor: Theme.of(context).indicatorColor,
           controller: _tabController,
           tabs: [
-            buildAppBarTab("Drivers"),
-            buildAppBarTab("Requests"),
+            NoteScreen(),
+            NoteScreen(),
+            //buildAppBarTab("Drivers"),
+            //buildAppBarTab("Requests"),
           ],
         ));
   }
