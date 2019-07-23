@@ -26,7 +26,7 @@ ThemeData buildTheme() {
   // And apply changes on it:
   return base.copyWith(
     textTheme: _buildTextTheme(base.textTheme),
-    primaryColor: const Color(0xFFFFF8E1),
+    primaryColor: const Color(0xFF55A9C6),
     indicatorColor: const Color(0xFF807A6B),
     scaffoldBackgroundColor: const Color(0xFFF5F5F5),
     accentColor: const Color(0xFFFFF8E1),

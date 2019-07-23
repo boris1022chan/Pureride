@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pureride/state_widget.dart';
 import 'package:pureride/ui/screens/home.dart';
 import 'package:pureride/ui/screens/login.dart';
 import 'package:pureride/ui/theme.dart';
 
-void main() => runApp(App());
+void main() => runApp(StateWidget(
+  child: App(),
+));
 
 class App extends StatelessWidget {
   @override
@@ -12,7 +15,6 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "PureRide",
       theme: buildTheme(),
-      initialRoute: '/login',
       routes: {
         '/': (context) => HomeScreen(),
         '/login': (context) => LoginScreen(),

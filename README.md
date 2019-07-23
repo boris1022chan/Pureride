@@ -1,6 +1,6 @@
-# PureRide
+# pureride
 
-A ridesharing app for Genesys.
+A ridesharing app for Genesys
 
 ## Getting Started
 
