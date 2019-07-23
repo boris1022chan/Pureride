@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+TextStyle buildAppBarStyle() {
+  return TextStyle(
+    fontFamily: 'Roboto',
+    fontSize: 16.0,
+    color: const Color(0xFF8ED2E8)
+  );
+}
+
 ThemeData buildTheme() {
   TextTheme _buildTextTheme(TextTheme base) {
     return base.copyWith(
@@ -11,8 +19,8 @@ ThemeData buildTheme() {
       ),
       title: base.title.copyWith(
         fontFamily: 'Roboto',
-        fontSize: 15.0,
-        color: const Color(0xFF807A6B),
+        fontSize: 30.0,
+        color: const Color(0xFF8ED2E8),
       ),
       caption: base.caption.copyWith(
         color: const Color(0xFFCCC5AF),
@@ -27,7 +35,7 @@ ThemeData buildTheme() {
   return base.copyWith(
     textTheme: _buildTextTheme(base.textTheme),
     primaryColor: const Color(0xFF55A9C6),
-    indicatorColor: const Color(0xFF807A6B),
+    indicatorColor: const Color(0xFFFFFFFF),
     scaffoldBackgroundColor: const Color(0xFFF5F5F5),
     accentColor: const Color(0xFFFFF8E1),
     iconTheme: IconThemeData(

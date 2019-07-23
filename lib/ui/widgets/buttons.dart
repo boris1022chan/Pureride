@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:pureride/models/drive_info.dart';
 
 Align createButtonBar(id, context) {
   return Align(
@@ -15,17 +16,34 @@ Align createButtonBar(id, context) {
       ));
 }
 
-Align createText(BuildContext context, String destinationName,
-    DateTime departureTime, String driver) {
-  return Align(
-    alignment: Alignment.topLeft,
-    child: Material(
-      child: ListTile(
-          title: Text("Driving to $destinationName"),
-          subtitle: Text(
-              "$driver is leaving at ${DateFormat("jm").format(departureTime)}")),
-    ),
-  );
+Align createText(BuildContext context, DriveInfo driveInfo, double titleSize,
+    double subtitleSize) {
+  if (driveInfo.isOffer) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Material(
+        child: ListTile(
+            title: Text("Driving to ${driveInfo.destinationName}",
+                style: TextStyle(fontSize: titleSize)),
+            subtitle: Text(
+                "${driveInfo.driver} is leaving at ${DateFormat("jm").format(driveInfo.departureTime)}",
+                style: TextStyle(fontSize: subtitleSize))),
+      ),
+    );
+  } else {
+    String requestor = driveInfo.taggerAlongers.elementAt(0);
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Material(
+          child: ListTile(
+              title: Text(
+                  "$requestor wants a drive to ${driveInfo.destinationName}",
+                  style: TextStyle(fontSize: titleSize)),
+              subtitle: Text(
+                  "Planning to leave at ${DateFormat("jm").format(driveInfo.departureTime)}",
+                  style: TextStyle(fontSize: subtitleSize)))),
+    );
+  }
 }
 
 Widget createAddMeButton(int id, BuildContext context) {
@@ -37,6 +55,7 @@ Widget createAddMeButton(int id, BuildContext context) {
     color: Color.fromRGBO(68, 153, 213, 1.0),
     shape: CircleBorder(),
     onPressed: () {
+      Scaffold.of(context).hideCurrentSnackBar();
       final snackbar = SnackBar(
         content: Text('Added yourself!'),
       );
@@ -54,6 +73,7 @@ Widget createMessageButton(int id, BuildContext context) {
     color: Color.fromRGBO(68, 153, 213, 1.0),
     shape: CircleBorder(),
     onPressed: () {
+      Scaffold.of(context).hideCurrentSnackBar();
       final snackbar = SnackBar(
         content: Text('Messaged!'),
       );
