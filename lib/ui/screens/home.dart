@@ -35,11 +35,8 @@ class HomeScreenState extends State<HomeScreen> {
             )),
         body: TabBarView(
           children: <Widget>[
-            ListViewNote(),
-            ListViewNote(),
-            //_buildDriverTab(),
-            //_buildRequestTab()
-
+            _buildDriverTab(),
+            _buildRequestTab(),
           ],
         )
       ),
