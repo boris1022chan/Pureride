@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pureride/ui/widgets/info_card.dart';
 
 import '../../models/state.dart';
 import '../../state_widget.dart';
@@ -30,7 +31,13 @@ class HomeScreenState extends State<HomeScreen> {
             )),
         body: Padding(
           padding: EdgeInsets.all(5.0),
-          child: body,
+          child: Center(child: ListView(
+            children: [
+              InfoCard(id: 1, destinationName: 'Lazeez', departureTime: TimeOfDay.now(), address: '23 Lazeez Dr'),
+              InfoCard(id: 2, destinationName: 'Lazeez', departureTime: TimeOfDay.now(), address: '23 Lazeez Dr'),
+              InfoCard(id: 3, destinationName: 'Lazeez', departureTime: TimeOfDay.now(), address: '23 Lazeez Dr'),
+            ]
+          )),
         ),
       ),
     );
