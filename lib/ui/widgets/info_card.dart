@@ -27,52 +27,55 @@ class InfoCard extends StatelessWidget {
           children: <Widget>[
             Column(
               children: <Widget>[
-                AspectRatio(
-                  aspectRatio: MediaQuery.of(context).devicePixelRatio,
-                  child:
-                      Image.network("https://picsum.photos/485/384?image=$id"),
-                ),
                 Material(
                   child: ListTile(
-                    title: Text("Driving to $destinationName"),
-                    subtitle: Text("Leaving at ${departureTime.hourOfPeriod}:${departureTime.minute}${departureTime.period.index == 0 ? "a" : "p"}")
-                  ),
+                      title: Text("Driving to $destinationName"),
+                      subtitle: Text(
+                          "Leaving at ${departureTime.hourOfPeriod}:${departureTime.minute}${departureTime.period.index == 0 ? "a" : "p"}")),
                 ),
-                Row(
-                  children: <Widget>[
-                    AddMeButton(id: this.id),
-                    MessageButton(id: this.id)
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.end,
-                )
               ],
             ),
-            Positioned(
-              left: 0.0,
-              top: 0.0,
-              bottom: 0.0,
-              right: 0.0,
-              child: Material(
-                type: MaterialType.transparency,
-                child: InkWell(
-                  onTap: () async {
-                    await Future.delayed(Duration(milliseconds: 200));
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return new FullScreenInfoCard(id: id);
-                        },
-                        fullscreenDialog: true,
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
+            createHeroPosition(context)
           ],
         ),
       ),
+    );
+  }
+
+  Widget createButtonBar(context) {
+    return ButtonTheme.bar(
+      child: new ButtonBar(
+        alignment: MainAxisAlignment.end,
+        children: <Widget>[AddMeButton(id: id), MessageButton(id: id)],
+      ),
+    );
+  }
+
+  Positioned createHeroPosition(BuildContext context) {
+    return Positioned(
+      left: 0.0,
+      top: 0.0,
+      bottom: 0.0,
+      right: 0.0,
+      child: Material(
+          type: MaterialType.transparency,
+          child: Column(children: [
+            InkWell(
+              onTap: () async {
+                await Future.delayed(Duration(milliseconds: 200));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return new FullScreenInfoCard(id: id);
+                    },
+                    fullscreenDialog: true,
+                  ),
+                );
+              },
+            ),
+            createButtonBar(context)
+          ])),
     );
   }
 }
@@ -80,17 +83,23 @@ class InfoCard extends StatelessWidget {
 class AddMeButton extends StatelessWidget {
   final int id;
 
-  const AddMeButton({Key key, this.id}) : super(key : key);
+  const AddMeButton({Key key, this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        final snackBar = SnackBar(content: Text("Added yourself"));
-
-        Scaffold.of(context).showSnackBar(snackBar);
+    return FlatButton(
+      child: Icon(
+        Icons.person_add,
+        color: Colors.white,
+      ),
+      color: Color.fromRGBO(68, 153, 213, 1.0),
+      shape: CircleBorder(),
+      onPressed: () {
+        final snackbar = SnackBar(
+          content: Text('Added yourself!'),
+        );
+        Scaffold.of(context).showSnackBar(snackbar);
       },
-      child: Icon(Icons.person_add)
     );
   }
 }
@@ -98,17 +107,23 @@ class AddMeButton extends StatelessWidget {
 class MessageButton extends StatelessWidget {
   final int id;
 
-  const MessageButton({Key key, this.id}) : super(key : key);
+  const MessageButton({Key key, this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        final snackBar = SnackBar(content: Text("Tapped Message"));
-
-        Scaffold.of(context).showSnackBar(snackBar);
+    return FlatButton(
+      child: Icon(
+        Icons.message,
+        color: Colors.white,
+      ),
+      color: Color.fromRGBO(68, 153, 213, 1.0),
+      shape: CircleBorder(),
+      onPressed: () {
+        final snackbar = SnackBar(
+          content: Text('Messaged!'),
+        );
+        Scaffold.of(context).showSnackBar(snackbar);
       },
-      child: Icon(Icons.message)
     );
   }
-} 
+}
