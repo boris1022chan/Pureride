@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pureride/ui/theme.dart';
 import 'package:pureride/ui/widgets/info_card.dart';
 
 import '../../models/state.dart';
@@ -13,6 +14,16 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenState extends State<HomeScreen> {
   StateModel appState;
 
+  Widget buildAppBarTab(String str) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Text(
+        str,
+        style: buildAppBarStyle(),
+      ),
+    );
+  }
+
   DefaultTabController _buildTabView({Widget body}) {
     const double _iconSize = 20.0;
 
@@ -21,12 +32,25 @@ class HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
             elevation: 2.0,
-            title: Text("PureRide"),
+            title: Row(
+              children: <Widget>[
+                Image.asset(
+                  'assets/logo.png',
+                  fit: BoxFit.contain,
+                  height: 32
+                ),
+                SizedBox(width: 5.0),
+                Text(
+                  "PureRide",
+                  style: Theme.of(context).textTheme.title,
+                ),
+              ],
+            ),
             bottom: TabBar(
               labelColor: Theme.of(context).indicatorColor,
               tabs: [
-                Text("Drivers"),
-                Text("Requests"),
+                buildAppBarTab("Drivers"),
+                buildAppBarTab("Requests"),
               ],
             )),
         body: TabBarView(
