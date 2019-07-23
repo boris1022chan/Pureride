@@ -9,7 +9,7 @@ import '../../models/state.dart';
 import '../../state_widget.dart';
 import 'login.dart';
 
-import '../data_demo/note_screen.dart';
+import '../data_demo/listview_note.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -59,10 +59,8 @@ class HomeScreenState extends State<HomeScreen>
           labelColor: Theme.of(context).indicatorColor,
           controller: _tabController,
           tabs: [
-            NoteScreen(),
-            NoteScreen(),
-            //buildAppBarTab("Drivers"),
-            //buildAppBarTab("Requests"),
+            buildAppBarTab("Drivers"),
+            buildAppBarTab("Requests"),
           ],
         ));
   }
@@ -112,7 +110,10 @@ class HomeScreenState extends State<HomeScreen>
       return _buildTabView(
           body: TabBarView(
         controller: _tabController,
-        children: <Widget>[_buildDriverTab(), _buildRequestTab()],
+        children: <Widget>[            
+          ListViewNote(),
+          ListViewNote(),
+          ],
       ));
   }
 
