@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "549117012432-hov6gaqmolopeo4a6dfa4d8g3jfjqa9k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.genesys.pureride",
+            "certificate_hash": "7379fbd230b982edc2660d3d11823b278b7c6ec2"
+          }
+        },
+        {
           "client_id": "549117012432-e55iba1rfemhqhre62hgj21c91kl8egt.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pureride/state_widget.dart';
 import 'package:pureride/ui/widgets/google_sign_in_button.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -33,7 +34,7 @@ class LoginScreen extends StatelessWidget {
               _buildText(),
               SizedBox(height: 50.0),
               GoogleSignInButton(
-                  onPressed: () => Navigator.of(context).pushReplacementNamed('/')),
+                  onPressed: () => StateWidget.of(context).signInWithGoogle()),
             ],
           ),
         ),

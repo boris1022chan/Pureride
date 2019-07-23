@@ -1,5 +1,7 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:pureride/utils/auth.dart';
 
 import 'models/state.dart';
 
@@ -26,6 +28,8 @@ class StateWidget extends StatefulWidget {
 
 class _StateWidgetState extends State<StateWidget> {
   StateModel state;
+  GoogleSignInAccount googleAccount;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
 
   @override
   void initState() {
@@ -34,7 +38,32 @@ class _StateWidgetState extends State<StateWidget> {
       state = widget.state;
     } else {
       state = new StateModel(isLoading: true);
+      initUser();
     }
+  }
+
+  Future<Null> initUser() async {
+    googleAccount = await getSignedInAccount(googleSignIn);
+
+    if (googleAccount == null) {
+      setState(() {
+        state.isLoading = false;
+      });
+    } else {
+      await signInWithGoogle();
+    }
+  }
+
+  Future<Null> signInWithGoogle() async {
+    if (googleAccount == null) {
+      googleAccount = await googleSignIn.signIn();
+    }
+    FirebaseUser firebaseUser = await signIntoFirebase(googleAccount);
+    state.user = firebaseUser;
+    setState(() {
+      state.isLoading = false;
+      state.user = firebaseUser;
+    });
   }
 
   @override
