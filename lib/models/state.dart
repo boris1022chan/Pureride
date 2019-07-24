@@ -6,11 +6,13 @@ class StateModel {
   FirebaseUser user;
   int selectedId;
   final Map<int, Function> addMeSubscribers = {};
+  final username;
 
   StateModel({
     this.isLoading = false,
     this.isLogin = false,
     this.user,
+    this.username = 'Boris Chan'
   });
 
   updateAddMeSubscribers() => this.addMeSubscribers.forEach((id, fn) => fn());

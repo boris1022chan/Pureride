@@ -15,7 +15,7 @@ class FullScreenInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
-    final Widget buttonBar = createButtonBar(id, context, email);
+    final Widget buttonBar = createButtonBar(id, context, email, this.driveInfo);
 
     return Hero(
         tag: 'hero$id-card',

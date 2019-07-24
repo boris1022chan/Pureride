@@ -5,6 +5,7 @@ class DriveInfo {
   final String driver;
   final List taggerAlongers;
   final bool isOffer;
+  final int totalSeats;
 
   DriveInfo({
     this.destinationName,
@@ -12,6 +13,7 @@ class DriveInfo {
     this.departureTime,
     this.driver,
     this.taggerAlongers,
-    this.isOffer
+    this.isOffer,
+    this.totalSeats = 1
   });
 }
