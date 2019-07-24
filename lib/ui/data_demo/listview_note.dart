@@ -62,7 +62,7 @@ class _ListViewNoteState extends State<ListViewNote> {
                               id: position,
                               driveInfo: DriveInfo(
                                 destinationName: items[position].destinationName,
-                                departureTime: DateTime.now(),
+                                departureTime: items[position].departureTime,
                                 address: items[position].address,
                                 driver: items[position].driver,
                                 taggerAlongers: items[position].taggerAlongers,
