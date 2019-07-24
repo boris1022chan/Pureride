@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pureride/state_widget.dart';
-import 'package:pureride/ui/screens/login.dart';
 import 'package:pureride/ui/widgets/AppBarTitle.dart';
-import 'package:pureride/ui/widgets/google_sign_in_button.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override
