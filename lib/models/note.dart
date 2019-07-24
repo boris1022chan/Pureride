@@ -8,11 +8,15 @@ class Note {
   String _driver;
   List _taggerAlongers;
   bool _isOffer;
+  int _seats;
 
 
 
-  Note(this._id, this._destinationName, this._address, this._departureTime, this._driver, this._taggerAlongers, this._isOffer);
- 
+  //Note(this._id, this._destinationName, this._address, this._departureTime, this._driver, this._taggerAlongers, this._isOffer);
+  Note(this._id, this._destinationName, this._address, this._departureTime, this._driver, this._taggerAlongers, this._isOffer, this._seats);
+
+
+
   Note.map(dynamic obj) {
     this._id = obj['id'];
     this._destinationName = obj['destinationName'];
@@ -21,6 +25,8 @@ class Note {
     this._driver = obj['driver'];
     this._taggerAlongers = obj['taggerAlongers'];
     this._isOffer = obj['isOffer'];
+    this._isOffer = obj['seats'];
+
   }
  
   String get id => _id;
@@ -30,6 +36,7 @@ class Note {
   String get driver => _driver;
   List get taggerAlongers => _taggerAlongers;
   bool get isOffer => _isOffer;
+  int get seats => _seats;
  
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
@@ -42,6 +49,7 @@ class Note {
     map['driver'] = _driver;
     map['taggerAlongers'] = _taggerAlongers;
     map['isOffer'] = _isOffer;
+    map['seats'] = _seats;
  
     return map;
   }
@@ -56,5 +64,6 @@ class Note {
     this._driver = map['driver'];
     this._taggerAlongers = map['taggerAlongers'];
     this._isOffer = map['isOffer'];
+    this._seats = map['seats'];
   }
 }

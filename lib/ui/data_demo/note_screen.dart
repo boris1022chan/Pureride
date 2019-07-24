@@ -58,13 +58,12 @@ class _NoteScreenState extends State<NoteScreen> {
                 if (widget.note.id != null) {
                   db
                       .updateNote(
-                          Note(widget.note.id, _destinationNameController.text, _addressController.text, DateTime.now(), _driverController.text, widget.note.taggerAlongers, true))
+                          Note(widget.note.id, _destinationNameController.text, _addressController.text, DateTime.now(), _driverController.text, widget.note.taggerAlongers, true, 0))
                       .then((_) {
                     Navigator.pop(context);
                   });
                 } else {
-                  db.createNote( _destinationNameController.text, _addressController.text, DateTime.now(), _driverController.text, [], true).then((_) {
-                    print('I hage received the info from DB');
+                  db.createNote( _destinationNameController.text, _addressController.text, DateTime.now(), _driverController.text, [], true,0).then((_) {
                     Navigator.pop(context);
                   });
                 }

@@ -13,11 +13,11 @@ class FirebaseFirestoreService {
  
   FirebaseFirestoreService.internal();
  
-  Future<Note> createNote(String destinationName, String address, DateTime departureTime, String driver, List list, bool isOffer ) async {
+  Future<Note> createNote(String destinationName, String address, DateTime departureTime, String driver, List list, bool isOffer, int seats) async {
     final TransactionHandler createTransaction = (Transaction tx) async {
       final DocumentSnapshot ds = await tx.get(noteCollection.document());
  
-      final Note note = new Note(ds.documentID, destinationName, address, departureTime, driver, list, isOffer );
+      final Note note = new Note(ds.documentID, destinationName, address, departureTime, driver, list, isOffer, seats);
       final Map<String, dynamic> data = note.toMap();
  
       await tx.set(ds.reference, data);

@@ -97,7 +97,7 @@ class RequestScreen extends StatelessWidget {
       print(_destination);
       */
       DateTime dep = new DateTime(departDate.year, departDate.month, departDate.day, departTime.hour, departTime.minute);
-      db.createNote( _destination, _destination, dep, _name, [], false).then((_) {
+      db.createNote( _destination, _destination, dep, _name, [], false, 1).then((_) {
         Navigator.pop(context);
       });
 

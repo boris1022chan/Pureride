@@ -66,7 +66,10 @@ class _ListViewNoteState extends State<ListViewNote> {
                                 address: items[position].address,
                                 driver: items[position].driver,
                                 taggerAlongers: items[position].taggerAlongers,
-                                isOffer: true),
+                                isOffer: true,
+                                totalSeats: items[position].seats,
+
+                                ),
                               email: "willakong@email.com"),
                   ],
                 );
@@ -136,7 +139,7 @@ class _ListViewNoteState extends State<ListViewNote> {
   void _createNewNote(BuildContext context) async {
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => NoteScreen(Note(null, '', '', DateTime.now(), '', ['a','b'], true))),
+      MaterialPageRoute(builder: (context) => NoteScreen(Note(null, '', '', DateTime.now(), '', ['a','b'], true, 1))),
     );
   }
 }
