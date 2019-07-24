@@ -25,6 +25,7 @@ dependencies:
   cloud_firestore: ^0.12.7+1
   intl: ">=0.14.0"
   url_launcher: ^5.1.0
+  google_maps_flutter: ^0.5.19+2
 
 dev_dependencies:
   flutter_test:
