@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pureride/ui/widgets/AppBarTitle.dart';
 import 'package:pureride/ui/widgets/departText.dart';
+import 'package:pureride/service/firebase_firestore_service_req.dart';
 
 final key = new GlobalKey<DepartTextState>();
 
 class RequestScreen extends StatelessWidget {
   static GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   String _name, _email, _destination;
+  FirebaseFirestoreService db = new FirebaseFirestoreService();
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,7 @@ class RequestScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: RaisedButton(
-                          onPressed: () => _submit(key.currentState.departDate, key.currentState.departTime),
+                          onPressed: () => _submit(key.currentState.departDate, key.currentState.departTime, context),
                           child: Text('Request'),
                         ),
                       )
@@ -84,21 +86,21 @@ class RequestScreen extends StatelessWidget {
     );
   }
 
-  void _submit(DateTime departDate, TimeOfDay departTime) {
+  void _submit(DateTime departDate, TimeOfDay departTime, BuildContext context) {
     if (formKey.currentState.validate()) {
       formKey.currentState.save();
+      /*
       print(departDate.toString());
       print(departTime.toString());
       print(_name);
       print(_email);
       print(_destination);
-      /*
-      db.createNote( _destination, _destination, departDate, _name, [], true).then((_) {
-        //print('I hage received the info from DB');
+      */
+      DateTime dep = new DateTime(departDate.year, departDate.month, departDate.day, departTime.hour, departTime.minute);
+      db.createNote( _destination, _destination, dep, _name, [], false).then((_) {
         Navigator.pop(context);
       });
-      */
-      
+
     }
     // TODO: Firestore writing
   }

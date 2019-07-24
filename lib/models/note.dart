@@ -20,7 +20,7 @@ class Note {
     this._departureTime = obj['departureTime'];
     this._driver = obj['driver'];
     this._taggerAlongers = obj['taggerAlongers'];
-    this._taggerAlongers = obj['isOffer'];
+    this._isOffer = obj['isOffer'];
   }
  
   String get id => _id;

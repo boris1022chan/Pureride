@@ -33,7 +33,8 @@ Align createText(BuildContext context, DriveInfo driveInfo, double titleSize,
       ),
     );
   } else {
-    String requestor = driveInfo.taggerAlongers.elementAt(0);
+    String requestor = driveInfo.driver;
+    //String requestor = "dummy";
     return Align(
       alignment: Alignment.topLeft,
       child: Material(
