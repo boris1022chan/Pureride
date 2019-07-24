@@ -5,10 +5,11 @@ import 'package:pureride/ui/widgets/departText.dart';
 
 final key = new GlobalKey<DepartTextState>();
 
-class RequestScreen extends StatelessWidget {
+class OfferScreen extends StatelessWidget {
   static GlobalKey<FormState> formKey = new GlobalKey<FormState>();
-  String _name, _email, _destination;
-
+  String _name, _email, _destination, _meetingDetails, _description;
+  int _seatsAvailale;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +54,19 @@ class RequestScreen extends StatelessWidget {
                     child: new DepartText(key: key)
                   ),
                   TextFormField(
+                    inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: 'Available Seats:'
+                    ),
+                    onSaved: (input) => _seatsAvailale = int.parse(input),
+                    validator: (input) {
+                      if (input.isEmpty || int.parse(input) < 1 || int.parse(input) > 8)
+                        return "Not a valid seat number";
+                      return null;
+                    },
+                  ),
+                  TextFormField(
                     decoration: InputDecoration(
                       labelText: 'Destination:'
                     ),
@@ -63,6 +77,27 @@ class RequestScreen extends StatelessWidget {
                       return null;
                     },
                   ),
+                  new TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Meeting Details:'
+                    ),
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
+                    onSaved: (input) => _meetingDetails = input,
+                    validator: (input) {
+                      if (input.isEmpty)
+                        return "Not valid meeting details";
+                      return null;
+                    },
+                  ),
+                  new TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Description:'
+                    ),
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
+                    onSaved: (input) => _description = input,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget> [
@@ -70,7 +105,7 @@ class RequestScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: RaisedButton(
                           onPressed: () => _submit(key.currentState.departDate, key.currentState.departTime),
-                          child: Text('Request'),
+                          child: Text('Offer'),
                         ),
                       )
                     ],
@@ -86,8 +121,10 @@ class RequestScreen extends StatelessWidget {
   }
 
   void _submit(DateTime departDate, TimeOfDay departTime) {
-    print(departDate.toString());
-    print(departTime.toString());
+    if (formKey.currentState.validate()) {
+      print(departDate.toString());
+      print(departTime.toString());
+    }
     // TODO: Firestore writing
   }
 }

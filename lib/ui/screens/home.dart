@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pureride/models/drive_info.dart';
+import 'package:pureride/ui/screens/offer.dart';
 import 'package:pureride/ui/screens/request.dart';
 import 'package:pureride/ui/theme.dart';
 import 'package:pureride/ui/widgets/AppBarTitle.dart';
@@ -73,7 +74,7 @@ class HomeScreenState extends State<HomeScreen>
         ? FloatingActionButton(
             shape: StadiumBorder(),
             onPressed: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => RequestScreen())),
+                MaterialPageRoute(builder: (context) => OfferScreen())),
             backgroundColor: appTheme.primaryColor,
             child: Icon(
               Icons.directions_car,
