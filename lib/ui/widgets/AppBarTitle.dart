@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pureride/ui/screens/settings.dart';
 
 class AppBarTitle extends StatelessWidget {
   @override
@@ -11,6 +12,14 @@ class AppBarTitle extends StatelessWidget {
           "PureRide",
           style: Theme.of(context).textTheme.title,
         ),
+        Spacer(),
+        IconButton(
+          icon: Icon(Icons.settings),
+          tooltip: "Settings",
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
+          },
+        )
       ],
     );
   }

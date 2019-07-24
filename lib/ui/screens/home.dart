@@ -11,6 +11,8 @@ import '../../state_widget.dart';
 import 'login.dart';
 
 import '../data_demo/listview_note.dart';
+import '../data_demo/note_screen.dart';
+import '../../models/note.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -91,13 +93,12 @@ class HomeScreenState extends State<HomeScreen>
             ),
           );
   }
-  */
 
   Scaffold _buildTabView({Widget body}) {
     return Scaffold(
       appBar: _buildAppBar(),
       body: body,
-      // floatingActionButton: _buildFloatingButton(),
+      floatingActionButton: _buildFloatingButton(),
     );
   }
 
@@ -118,8 +119,9 @@ class HomeScreenState extends State<HomeScreen>
         children: <Widget>[            
           //_buildDriverTab(),
           _buildDriverTab(),
-          ListViewNote(),
-          //ListViewNote(),
+          NoteScreen(Note("1", "Destination", "Address", new DateTime.now(), "Driver", [], true))
+          // ListViewNote(),
+          // ListViewNote(),
           ],
       ));
   }
