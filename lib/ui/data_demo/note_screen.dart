@@ -58,7 +58,7 @@ class _NoteScreenState extends State<NoteScreen> {
                 if (widget.note.id != null) {
                   db
                       .updateNote(
-                          Note(widget.note.id, _destinationNameController.text, _addressController.text, DateTime.now(), _driverController.text, [], true))
+                          Note(widget.note.id, _destinationNameController.text, _addressController.text, DateTime.now(), _driverController.text, widget.note.taggerAlongers, true))
                       .then((_) {
                     Navigator.pop(context);
                   });

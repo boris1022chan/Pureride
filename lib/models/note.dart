@@ -50,7 +50,9 @@ class Note {
     this._id = map['id'];
     this._destinationName = map['destinationName'];
     this._address = map['address'];
-    this._departureTime = map['departureTime'];
+    // how to convert timestamp to dateTime
+    //this._departureTime = new DateTime.fromMillisecondsSinceEpoch(map['departureTime']*1000);
+    this._departureTime = new DateTime.fromMillisecondsSinceEpoch(1000000);
     this._driver = map['driver'];
     this._taggerAlongers = map['taggerAlongers'];
     this._isOffer = map['isOffer'];

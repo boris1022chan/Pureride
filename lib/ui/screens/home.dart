@@ -193,6 +193,6 @@ class HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     appState = StateWidget.of(context).state;
     appTheme = Theme.of(context);
-    return _buildContent();
+    return ListViewNote();
   }
 }

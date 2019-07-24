@@ -126,7 +126,7 @@ class _ListViewNoteState extends State<ListViewNote> {
   void _createNewNote(BuildContext context) async {
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => NoteScreen(Note(null, 'TNT', 'Jihua',DateTime.now(), 'xia0olin', ['a','b'], true))),
+      MaterialPageRoute(builder: (context) => NoteScreen(Note(null, '', '', DateTime.now(), '', ['a','b'], true))),
     );
   }
 }
