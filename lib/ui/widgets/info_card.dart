@@ -13,7 +13,7 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Widget textDescription = createText(context, driveInfo, 14, 12);
-    final Widget buttonBar = createButtonBar(id, context, email);
+    final Widget buttonBar = createButtonBar(id, context, email, this.driveInfo);
 
     return Hero(
         tag: 'hero$id-card',

@@ -4,14 +4,14 @@ import 'package:intl/intl.dart';
 import 'package:pureride/models/drive_info.dart';
 import 'package:pureride/ui/widgets/add_me_btn.dart';
 
-Align createButtonBar(id, context, email) {
+Align createButtonBar(id, context, email, driveInfo) {
   return Align(
       alignment: Alignment.bottomRight,
       child: ButtonTheme.bar(
         child: new ButtonBar(
           alignment: MainAxisAlignment.end,
           children: <Widget>[
-            AddMeButton(id: id),
+            AddMeButton(id: id, driveInfo: driveInfo),
             createMessageButton(id, context, email)
           ],
         ),
