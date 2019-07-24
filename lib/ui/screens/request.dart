@@ -85,8 +85,10 @@ class RequestScreen extends StatelessWidget {
   }
 
   void _submit(DateTime departDate, TimeOfDay departTime) {
-    print(departDate.toString());
-    print(departTime.toString());
+    if (formKey.currentState.validate()) {
+      print(departDate.toString());
+      print(departTime.toString());
+    }
     // TODO: Firestore writing
   }
 }

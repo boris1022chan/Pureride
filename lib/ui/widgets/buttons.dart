@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
 import 'package:pureride/models/drive_info.dart';
 import 'package:pureride/ui/widgets/add_me_btn.dart';
 
-Align createButtonBar(id, context) {
+Align createButtonBar(id, context, email) {
   return Align(
       alignment: Alignment.bottomRight,
       child: ButtonTheme.bar(
@@ -11,7 +12,7 @@ Align createButtonBar(id, context) {
           alignment: MainAxisAlignment.end,
           children: <Widget>[
             AddMeButton(id: id),
-            createMessageButton(id, context)
+            createMessageButton(id, context, email)
           ],
         ),
       ));
@@ -65,7 +66,7 @@ Widget createAddMeButton(int id, BuildContext context) {
   );
 }
 
-Widget createMessageButton(int id, BuildContext context) {
+Widget createMessageButton(int id, BuildContext context, String email) {
   return FlatButton(
     child: Icon(
       Icons.message,
@@ -73,12 +74,21 @@ Widget createMessageButton(int id, BuildContext context) {
     ),
     color: Color.fromRGBO(68, 153, 213, 1.0),
     shape: CircleBorder(),
-    onPressed: () {
-      Scaffold.of(context).hideCurrentSnackBar();
-      final snackbar = SnackBar(
-        content: Text('Messaged!'),
-      );
-      Scaffold.of(context).showSnackBar(snackbar);
-    },
+    onPressed: () => _pressedMessageButton(context, email)
   );
+}
+
+void _pressedMessageButton(BuildContext context, String email) async {
+  String url = 'mailto:' + email;
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+
+  Scaffold.of(context).hideCurrentSnackBar();
+  final snackbar = SnackBar(
+    content: Text('Messaged!'),
+  );
+  Scaffold.of(context).showSnackBar(snackbar);
 }
