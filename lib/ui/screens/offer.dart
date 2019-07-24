@@ -5,11 +5,11 @@ import 'package:pureride/ui/widgets/departText.dart';
 
 final key = new GlobalKey<DepartTextState>();
 
-class RequestScreen extends StatelessWidget {
+class OfferScreen extends StatelessWidget {
   static GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   String _name, _destination;
   int _seatsAvailale;
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +39,15 @@ class RequestScreen extends StatelessWidget {
                     child: new DepartText(key: key)
                   ),
                   TextFormField(
+                    inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: 'Available Seats:'
+                    ),
+                    //validator: (input) => !input.contains('@') ? 'Not a valid Name.',
+                    onSaved: (input) => _seatsAvailale = int.parse(input),
+                  ),
+                  TextFormField(
                     decoration: InputDecoration(
                       labelText: 'Destination:'
                     ),
@@ -52,7 +61,7 @@ class RequestScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: RaisedButton(
                           onPressed: () => _submit(key.currentState.departDate, key.currentState.departTime),
-                          child: Text('Request'),
+                          child: Text('Offer'),
                         ),
                       )
                     ],
