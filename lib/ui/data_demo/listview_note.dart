@@ -100,10 +100,6 @@ class _ListViewNoteState extends State<ListViewNote> {
                 );
               }),
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () => _createNewNote(context),
-        ),
       ),
     );
   }
