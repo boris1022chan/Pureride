@@ -116,9 +116,9 @@ class HomeScreenState extends State<HomeScreen>
         controller: _tabController,
         children: <Widget>[            
           //_buildDriverTab(),
-          _buildDriverTab(),
+          //_buildDriverTab(),
           ListViewNote(),
-          //ListViewNote(),
+          ListViewNote(),
           ],
       ));
   }
