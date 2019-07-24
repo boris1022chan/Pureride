@@ -125,6 +125,7 @@ class _ListViewNoteState extends State<ListViewNote> {
                     taggerAlongers: <String>[],
                     isOffer: true
                     ),
+                  email: "sample@email.com"
                   );
                   }),
         ),

@@ -69,7 +69,6 @@ class HomeScreenState extends State<HomeScreen>
         ));
   }
 
-/*
   FloatingActionButton _buildFloatingButton() {
     return _tabController.index == 0
         ? FloatingActionButton(
@@ -137,31 +136,34 @@ class HomeScreenState extends State<HomeScreen>
       InfoCard(
         id: 1,
         driveInfo: DriveInfo(
-            destinationName: 'Lazeez',
-            departureTime: DateTime.now(),
-            address: '23 Lazeez Dr',
-            driver: 'Tim Elgersma',
-            taggerAlongers: <String>[],
-            isOffer: true),
+          destinationName: 'Lazeez',
+          departureTime: DateTime.now(),
+          address: '23 Lazeez Dr',
+          driver: 'Tim Elgersma',
+          taggerAlongers: <String>[],
+          isOffer: true),
+          email: "timelgersma@email.com",
       ),
       InfoCard(
           id: 2,
           driveInfo: DriveInfo(
-              destinationName: 'Lazeez',
-              departureTime: DateTime.now(),
-              address: '23 Lazeez Dr',
-              driver: 'Boris Chan',
-              taggerAlongers: <String>[],
-              isOffer: true)),
+            destinationName: 'Lazeez',
+            departureTime: DateTime.now(),
+            address: '23 Lazeez Dr',
+            driver: 'Boris Chan',
+            taggerAlongers: <String>[],
+            isOffer: true),
+          email: "borischan@email.com"),
       InfoCard(
           id: 3,
           driveInfo: DriveInfo(
-              destinationName: 'Lazeez',
-              departureTime: DateTime.now(),
-              address: '23 Lazeez Dr',
-              driver: 'Willa Kong',
-              taggerAlongers: <String>[],
-              isOffer: true)),
+            destinationName: 'Lazeez',
+            departureTime: DateTime.now(),
+            address: '23 Lazeez Dr',
+            driver: 'Willa Kong',
+            taggerAlongers: <String>[],
+            isOffer: true),
+          email: "willakong@email.com"),
     ]));
   }
 
@@ -171,29 +173,32 @@ class HomeScreenState extends State<HomeScreen>
       InfoCard(
           id: 4,
           driveInfo: DriveInfo(
-              destinationName: 'Lazeez',
-              departureTime: DateTime.now(),
-              address: '23 Lazeez Dr',
-              driver: '',
-              taggerAlongers: ['Dev Monkey1'],
-              isOffer: false)),
+            destinationName: 'Lazeez',
+            departureTime: DateTime.now(),
+            address: '23 Lazeez Dr',
+            driver: '',
+            taggerAlongers: ['Dev Monkey1'],
+            isOffer: false),
+          email: "devmonkey1@email.com"),
       InfoCard(
           driveInfo: DriveInfo(
-              destinationName: 'Lazeez',
-              departureTime: DateTime.now(),
-              address: '23 Lazeez Dr',
-              driver: '',
-              taggerAlongers: ['Dev Monkey2'],
-              isOffer: false)),
+            destinationName: 'Lazeez',
+            departureTime: DateTime.now(),
+            address: '23 Lazeez Dr',
+            driver: '',
+            taggerAlongers: ['Dev Monkey2'],
+            isOffer: false),
+          email: "devmonkey2@email.com"),
       InfoCard(
           id: 6,
           driveInfo: DriveInfo(
-              destinationName: 'Lazeez',
-              departureTime: DateTime.now(),
-              address: '23 Lazeez Dr',
-              driver: '',
-              taggerAlongers: ['Dev Monkey3'],
-              isOffer: false)),
+            destinationName: 'Lazeez',
+            departureTime: DateTime.now(),
+            address: '23 Lazeez Dr',
+            driver: '',
+            taggerAlongers: ['Dev Monkey3'],
+            isOffer: false),
+          email: "devmonkey3@email.com"),
     ]));
   }
 

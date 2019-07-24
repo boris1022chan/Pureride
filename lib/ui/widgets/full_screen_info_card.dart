@@ -6,15 +6,16 @@ class FullScreenInfoCard extends StatelessWidget {
   final int id;
   final BuildContext context;
   final DriveInfo driveInfo;
+  final String email;
 
   const FullScreenInfoCard(
-      {Key key, this.id, this.context, this.driveInfo})
+      {Key key, this.id, this.context, this.driveInfo, this.email})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
-    final Widget buttonBar = createButtonBar(id, context);
+    final Widget buttonBar = createButtonBar(id, context, email);
 
     return Hero(
         tag: 'hero$id-card',

@@ -6,13 +6,14 @@ import 'package:pureride/ui/widgets/full_screen_info_card.dart';
 class InfoCard extends StatelessWidget {
   final int id;
   final DriveInfo driveInfo;
+  final String email;
 
-  const InfoCard({Key key, this.id, this.driveInfo}) : super(key: key);
+  const InfoCard({Key key, this.id, this.driveInfo, this.email}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final Widget textDescription = createText(context, driveInfo, 14, 12);
-    final Widget buttonBar = createButtonBar(id, context);
+    final Widget buttonBar = createButtonBar(id, context, email);
 
     return Hero(
         tag: 'hero$id-card',
@@ -49,7 +50,8 @@ class InfoCard extends StatelessWidget {
                       body: FullScreenInfoCard(
                         id: id,
                         context: context,
-                        driveInfo: driveInfo
+                        driveInfo: driveInfo,
+                        email: email
                       )
                     );
                   },
