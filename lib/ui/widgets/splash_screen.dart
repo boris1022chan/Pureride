@@ -6,7 +6,7 @@ BoxDecoration buildBackground() {
       image: AssetImage("assets/intersection.jpeg"),
       fit: BoxFit.cover,
       colorFilter: new ColorFilter.mode(
-          Colors.black.withOpacity(0.9), BlendMode.dstATop),
+          Colors.black.withOpacity(0.6), BlendMode.darken),
     ),
   );
 }

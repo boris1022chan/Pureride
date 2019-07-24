@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pureride/models/drive_info.dart';
 import 'package:pureride/ui/widgets/buttons.dart';
+import 'package:pureride/ui/widgets/map_widget.dart';
 
 class FullScreenInfoCard extends StatelessWidget {
   final int id;
@@ -44,13 +45,14 @@ class FullScreenInfoCard extends StatelessWidget {
                           ListTile(
                             title: Text("Duration"),
                             subtitle: Text("15 minutes"),
-                          )
+                          ),
+                          buttonBar,
+                          MapWidget()
                         ],
                       ),
                       // padding: EdgeInsets.only(top: 80)
                     )),
               ),
-              buttonBar
             ],
           ),
         ));

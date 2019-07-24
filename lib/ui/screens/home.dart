@@ -209,9 +209,6 @@ class HomeScreenState extends State<HomeScreen>
     ]));
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     appState = StateWidget.of(context).state;
