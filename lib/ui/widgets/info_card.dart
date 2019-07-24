@@ -1,31 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:pureride/models/drive_info.dart';
 import 'package:pureride/ui/widgets/buttons.dart';
 import 'package:pureride/ui/widgets/full_screen_info_card.dart';
 
 class InfoCard extends StatelessWidget {
   final int id;
-  final String destinationName;
-  final String address;
-  final DateTime departureTime;
-  final String driver;
-  final List taggerAlongers;
-  final int type;
+  final DriveInfo driveInfo;
 
-  const InfoCard(
-      {Key key,
-      this.id,
-      this.destinationName,
-      this.address,
-      this.departureTime,
-      this.driver,
-      this.taggerAlongers,
-      this.type})
-      : super(key: key);
+  const InfoCard({Key key, this.id, this.driveInfo}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final Widget textDescription = createText(context, destinationName,
-        departureTime, driver, type, taggerAlongers, 14, 12);
+    final Widget textDescription = createText(context, driveInfo, 14, 12);
     final Widget buttonBar = createButtonBar(id, context);
 
     return Hero(
@@ -62,13 +48,8 @@ class InfoCard extends StatelessWidget {
                     return new FullScreenInfoCard(
                         id: id,
                         context: context,
-                        destinationName: this.destinationName,
-                        address: this.address,
-                        departureTime: this.departureTime,
-                        driver: this.driver,
-                        buttonBar: buttonBar,
-                        type: this.type,
-                        taggerAlongers: this.taggerAlongers);
+                        driveInfo: driveInfo,
+                        buttonBar: buttonBar);
                   },
                 ),
               );
