@@ -7,6 +7,9 @@ import 'package:pureride/service/firebase_firestore_service.dart';
  
 import 'package:pureride/ui/data_demo/note_screen.dart';
  
+import 'package:pureride/models/drive_info.dart';
+import 'package:pureride/ui/widgets/info_card.dart';
+
 class ListViewNote extends StatefulWidget {
   @override
   _ListViewNoteState createState() => new _ListViewNoteState();
@@ -42,6 +45,8 @@ class _ListViewNoteState extends State<ListViewNote> {
     super.dispose();
   }
  
+
+/*
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -101,6 +106,43 @@ class _ListViewNoteState extends State<ListViewNote> {
       ),
     );
   }
+  */
+
+
+
+@override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: ListView.builder(
+              itemCount: items.length,
+              padding: const EdgeInsets.all(15.0),
+              itemBuilder: (context, position) {
+                return InfoCard(
+                  id: 1,
+                  driveInfo: DriveInfo(
+                    destinationName: '${items[position].destinationName}',
+                    departureTime: DateTime.now(),
+                    address: '${items[position].address}',
+                    driver: '${items[position].driver}',
+                    taggerAlongers: <String>[],
+                    isOffer: true
+                    ),
+                  );
+                  }),
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () => _createNewNote(context),
+        ),
+      ),
+    );
+  }
+
+
+
+
  
   void _deleteNote(BuildContext context, Note note, int position) async {
     db.deleteNote(note.id).then((notes) {
