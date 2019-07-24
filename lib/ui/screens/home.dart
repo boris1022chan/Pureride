@@ -9,6 +9,9 @@ import '../../models/state.dart';
 import '../../state_widget.dart';
 import 'login.dart';
 
+import '../data_demo/listview_note.dart';
+
+
 class HomeScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new HomeScreenState();
@@ -110,7 +113,10 @@ class HomeScreenState extends State<HomeScreen>
       return _buildTabView(
           body: TabBarView(
         controller: _tabController,
-        children: <Widget>[_buildDriverTab(), _buildRequestTab()],
+        children: <Widget>[            
+          ListViewNote(),
+          ListViewNote(),
+          ],
       ));
   }
 
