@@ -92,6 +92,13 @@ class RequestScreen extends StatelessWidget {
       print(_name);
       print(_email);
       print(_destination);
+      /*
+      db.createNote( _destination, _destination, departDate, _name, [], true).then((_) {
+        //print('I hage received the info from DB');
+        Navigator.pop(context);
+      });
+      */
+      
     }
     // TODO: Firestore writing
   }

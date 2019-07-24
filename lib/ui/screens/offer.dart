@@ -137,7 +137,9 @@ class OfferScreen extends StatelessWidget {
       print(_description);
       print(_seatsAvailale);
       */
-      db.createNote( _destination, _destination, departDate, _name, [], true).then((_) {
+      DateTime dep = new DateTime(departDate.year, departDate.month, departDate.day, departTime.hour, departTime.minute);
+
+      db.createNote( _destination, _destination, dep, _name, [], true).then((_) {
               //print('I hage received the info from DB');
               Navigator.pop(context);
             });

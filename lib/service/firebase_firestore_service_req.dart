@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:pureride/models/request.dart';
+import 'package:pureride/models/note.dart';
 
 
 final CollectionReference noteCollection = Firestore.instance.collection('requests');
@@ -13,11 +13,11 @@ class FirebaseFirestoreService {
  
   FirebaseFirestoreService.internal();
  
-  Future<Request> createNote(String destinationName,, DateTime departureTime, String driver, List list ) async {
+  Future<Note> createNote(String destinationName, String address, DateTime departureTime, String driver, List list, bool isOffer ) async {
     final TransactionHandler createTransaction = (Transaction tx) async {
       final DocumentSnapshot ds = await tx.get(noteCollection.document());
  
-      final Request note = new Request(ds.documentID, destinationName, departureTime, driver, list );
+      final Note note = new Note(ds.documentID, destinationName, address, departureTime, driver, list, isOffer );
       final Map<String, dynamic> data = note.toMap();
  
       await tx.set(ds.reference, data);
@@ -26,7 +26,7 @@ class FirebaseFirestoreService {
     };
  
     return Firestore.instance.runTransaction(createTransaction).then((mapData) {
-      return Request.fromMap(mapData);
+      return Note.fromMap(mapData);
     }).catchError((error) {
       print('error: $error');
       return null;
@@ -47,7 +47,7 @@ class FirebaseFirestoreService {
     return snapshots;
   }
  
-  Future<dynamic> updateNote(Request note) async {
+  Future<dynamic> updateNote(Note note) async {
     final TransactionHandler updateTransaction = (Transaction tx) async {
       final DocumentSnapshot ds = await tx.get(noteCollection.document(note.id));
  
