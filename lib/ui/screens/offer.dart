@@ -7,7 +7,7 @@ final key = new GlobalKey<DepartTextState>();
 
 class OfferScreen extends StatelessWidget {
   static GlobalKey<FormState> formKey = new GlobalKey<FormState>();
-  String _name, _destination;
+  String _name, _email, _destination, _meetingDetails, _description;
   int _seatsAvailale;
   
   @override
@@ -30,8 +30,23 @@ class OfferScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: 'Name:'
                     ),
-                    //validator: (input) => !input.contains('@') ? 'Not a valid Name.',
                     onSaved: (input) => _name = input,
+                    validator: (input) {
+                      if (input.isEmpty)
+                        return "Not a valid name";
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Email:'
+                    ),
+                    validator: (input) {
+                      if (input.isEmpty || !input.contains('@'))
+                        return "Not a valid email";
+                      return null;
+                    },
+                    onSaved: (input) => _email = input,
                   ),
                   new Text('\n'),
                   Container(
@@ -44,15 +59,44 @@ class OfferScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: 'Available Seats:'
                     ),
-                    //validator: (input) => !input.contains('@') ? 'Not a valid Name.',
                     onSaved: (input) => _seatsAvailale = int.parse(input),
+                    validator: (input) {
+                      if (input.isEmpty || int.parse(input) < 1 || int.parse(input) > 8)
+                        return "Not a valid seat number";
+                      return null;
+                    },
                   ),
                   TextFormField(
                     decoration: InputDecoration(
                       labelText: 'Destination:'
                     ),
-                    //validator: (input) => !input.contains('@') ? 'Not a valid Name.',
                     onSaved: (input) => _destination = input,
+                    validator: (input) {
+                      if (input.isEmpty)
+                        return "Not a valid destination";
+                      return null;
+                    },
+                  ),
+                  new TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Meeting Details:'
+                    ),
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
+                    onSaved: (input) => _meetingDetails = input,
+                    validator: (input) {
+                      if (input.isEmpty)
+                        return "Not valid meeting details";
+                      return null;
+                    },
+                  ),
+                  new TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Description:'
+                    ),
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
+                    onSaved: (input) => _description = input,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -77,8 +121,10 @@ class OfferScreen extends StatelessWidget {
   }
 
   void _submit(DateTime departDate, TimeOfDay departTime) {
-    print(departDate.toString());
-    print(departTime.toString());
+    if (formKey.currentState.validate()) {
+      print(departDate.toString());
+      print(departTime.toString());
+    }
     // TODO: Firestore writing
   }
 }

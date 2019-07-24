@@ -8,7 +8,6 @@ final key = new GlobalKey<DepartTextState>();
 class RequestScreen extends StatelessWidget {
   static GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   String _name, _destination;
-  int _seatsAvailale;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +29,12 @@ class RequestScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: 'Name:'
                     ),
-                    //validator: (input) => !input.contains('@') ? 'Not a valid Name.',
                     onSaved: (input) => _name = input,
+                    validator: (input) {
+                      if (input.isEmpty)
+                        return "Not a valid name";
+                      return null;
+                    },
                   ),
                   new Text('\n'),
                   Container(
@@ -42,8 +45,12 @@ class RequestScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: 'Destination:'
                     ),
-                    //validator: (input) => !input.contains('@') ? 'Not a valid Name.',
                     onSaved: (input) => _destination = input,
+                    validator: (input) {
+                      if (input.isEmpty)
+                        return "Not a valid destination";
+                      return null;
+                    },
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,

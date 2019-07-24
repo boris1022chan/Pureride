@@ -10,7 +10,7 @@ class DepartText extends StatefulWidget {
 class DepartTextState extends State<DepartText> {
   TimeOfDay _time = new TimeOfDay.now();
   DateTime _date = DateTime.now();
-  String _departText = "(Please select a date and time)";
+  String _departText = "";
   TimeOfDay get departTime => _time;
   DateTime get departDate => _date;
 
@@ -21,6 +21,9 @@ class DepartTextState extends State<DepartText> {
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      _departText = "${new DateFormat('yyyy-MM-dd').format(_date)}, ${MaterialLocalizations.of(context).formatTimeOfDay(_time)}";
+    });
     return new Scaffold(
       body: new Center(
         child: new Column(
