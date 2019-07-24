@@ -74,7 +74,7 @@ class HomeScreenState extends State<HomeScreen>
         ? FloatingActionButton(
             shape: StadiumBorder(),
             onPressed: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => OfferScreen())),
+                MaterialPageRoute(builder: (context) => OfferScreen(context))),
             backgroundColor: appTheme.primaryColor,
             child: Icon(
               Icons.directions_car,
@@ -201,6 +201,9 @@ class HomeScreenState extends State<HomeScreen>
           email: "devmonkey3@email.com"),
     ]));
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {

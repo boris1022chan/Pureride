@@ -64,6 +64,7 @@ class _NoteScreenState extends State<NoteScreen> {
                   });
                 } else {
                   db.createNote( _destinationNameController.text, _addressController.text, DateTime.now(), _driverController.text, [], true).then((_) {
+                    print('I hage received the info from DB');
                     Navigator.pop(context);
                   });
                 }

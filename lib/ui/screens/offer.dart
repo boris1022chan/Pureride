@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:pureride/ui/widgets/AppBarTitle.dart';
 import 'package:pureride/ui/widgets/departText.dart';
+import 'package:pureride/service/firebase_firestore_service.dart';
 
 final key = new GlobalKey<DepartTextState>();
 
@@ -9,7 +10,10 @@ class OfferScreen extends StatelessWidget {
   static GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   String _name, _email, _destination, _meetingDetails, _description;
   int _seatsAvailale;
+  FirebaseFirestoreService db = new FirebaseFirestoreService();
+  BuildContext _context;
   
+  OfferScreen(this._context);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +108,7 @@ class OfferScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: RaisedButton(
-                          onPressed: () => _submit(key.currentState.departDate, key.currentState.departTime),
+                          onPressed: () => _submit(key.currentState.departDate, key.currentState.departTime, context),
                           child: Text('Offer'),
                         ),
                       )
@@ -120,10 +124,24 @@ class OfferScreen extends StatelessWidget {
     );
   }
 
-  void _submit(DateTime departDate, TimeOfDay departTime) {
+  void _submit(DateTime departDate, TimeOfDay departTime, BuildContext context) {
     if (formKey.currentState.validate()) {
+      formKey.currentState.save();
+      /*
       print(departDate.toString());
       print(departTime.toString());
+      print(_name);
+      print(_email);
+      print(_destination);
+      print(_meetingDetails);
+      print(_description);
+      print(_seatsAvailale);
+      */
+      db.createNote( _destination, _destination, departDate, _name, [], true).then((_) {
+                    //print('I hage received the info from DB');
+                    Navigator.pop(context);
+                  });
+
     }
     // TODO: Firestore writing
   }

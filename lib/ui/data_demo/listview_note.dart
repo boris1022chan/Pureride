@@ -72,9 +72,48 @@ class _ListViewNoteState extends State<ListViewNote> {
                 );
               }),
         ),
+      /*
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () => _createNewNote(context),
+        ),
+        */
       ),
     );
   }
+
+/*
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: ListView.builder(
+              itemCount: items.length,
+              padding: const EdgeInsets.all(15.0),
+              itemBuilder: (context, position) {
+                return InfoCard(
+                  id: 1,
+                  driveInfo: DriveInfo(
+                    destinationName: '${items[position].destinationName}',
+                    departureTime: DateTime.now(),
+                    address: '${items[position].address}',
+                    driver: '${items[position].driver}',
+                    taggerAlongers: <String>[],
+                    isOffer: true
+                    ),
+                  email: "sample@email.com"
+                  );
+                  }),
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () => _createNewNote(context),
+        ),
+      ),
+    );
+  }
+  */
 
 
 
