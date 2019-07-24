@@ -46,7 +46,7 @@ class _ListViewNoteState extends State<ListViewNote> {
   }
  
 
-/*
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -58,43 +58,16 @@ class _ListViewNoteState extends State<ListViewNote> {
               itemBuilder: (context, position) {
                 return Column(
                   children: <Widget>[
-                    Divider(height: 5.0,color:Colors.black),
-                    ListTile(
-                      title: Text(
-                        '${items[position].destinationName}',
-                        style: TextStyle(
-                          fontSize: 22.0,
-                          color: Colors.deepOrangeAccent,
-                        ),
-                      ),
-                      subtitle: Text(
-                        '${items[position].driver}',
-                        style: new TextStyle(
-                          fontSize: 18.0,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                      leading: Column(
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.all(10.0)),
-                          CircleAvatar(
-                            backgroundColor: Colors.blueAccent,
-                            radius: 15.0,
-                            child: Text(
-                              '${position + 1}',
-                              style: TextStyle(
-                                fontSize: 22.0,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          IconButton(
-                              icon: const Icon(Icons.remove_circle_outline),
-                              onPressed: () => _deleteNote(context, items[position], position)),
-                        ],
-                      ),
-                      onTap: () => _navigateToNote(context, items[position]),
-                    ),
+                          InfoCard(
+                              id: position,
+                              driveInfo: DriveInfo(
+                                destinationName: items[position].destinationName,
+                                departureTime: DateTime.now(),
+                                address: items[position].address,
+                                driver: items[position].driver,
+                                taggerAlongers: items[position].taggerAlongers,
+                                isOffer: true),
+                              email: "willakong@email.com"),
                   ],
                 );
               }),
@@ -102,41 +75,6 @@ class _ListViewNoteState extends State<ListViewNote> {
       ),
     );
   }
-  */
-
-
-
-@override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: ListView.builder(
-              itemCount: items.length,
-              padding: const EdgeInsets.all(15.0),
-              itemBuilder: (context, position) {
-                return InfoCard(
-                  id: 1,
-                  driveInfo: DriveInfo(
-                    destinationName: '${items[position].destinationName}',
-                    departureTime: DateTime.now(),
-                    address: '${items[position].address}',
-                    driver: '${items[position].driver}',
-                    taggerAlongers: <String>[],
-                    isOffer: true
-                    ),
-                  email: "sample@email.com"
-                  );
-                  }),
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () => _createNewNote(context),
-        ),
-      ),
-    );
-  }
-
 
 
 

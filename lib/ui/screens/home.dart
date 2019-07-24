@@ -91,13 +91,12 @@ class HomeScreenState extends State<HomeScreen>
             ),
           );
   }
-  */
 
   Scaffold _buildTabView({Widget body}) {
     return Scaffold(
       appBar: _buildAppBar(),
       body: body,
-      // floatingActionButton: _buildFloatingButton(),
+      floatingActionButton: _buildFloatingButton(),
     );
   }
 
@@ -166,6 +165,7 @@ class HomeScreenState extends State<HomeScreen>
           email: "willakong@email.com"),
     ]));
   }
+
 
   Widget _buildRequestTab() {
     return Center(
