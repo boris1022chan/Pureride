@@ -4,10 +4,14 @@ class StateModel {
   bool isLoading;
   bool isLogin;
   FirebaseUser user;
+  int selectedId;
+  final Map<int, Function> addMeSubscribers = {};
 
   StateModel({
     this.isLoading = false,
     this.isLogin = false,
     this.user,
   });
+
+  updateAddMeSubscribers() => this.addMeSubscribers.forEach((id, fn) => fn());
 }
