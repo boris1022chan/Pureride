@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
- 
+
 import 'package:pureride/models/note.dart';
 import 'package:pureride/service/firebase_firestore_service.dart';
- 
+
 import 'package:pureride/ui/data_demo/note_screen.dart';
- 
+
 import 'package:pureride/models/drive_info.dart';
 import 'package:pureride/ui/widgets/info_card.dart';
 
@@ -14,17 +14,17 @@ class ListViewNote extends StatefulWidget {
   @override
   _ListViewNoteState createState() => new _ListViewNoteState();
 }
- 
+
 class _ListViewNoteState extends State<ListViewNote> {
   List<Note> items;
   FirebaseFirestoreService db = new FirebaseFirestoreService();
- 
+
   StreamSubscription<QuerySnapshot> noteSub;
- 
+
   @override
   void initState() {
     super.initState();
- 
+
     items = new List();
     // after the initial state, we have already got the posts
     noteSub?.cancel();
@@ -32,24 +32,25 @@ class _ListViewNoteState extends State<ListViewNote> {
       final List<Note> notes = snapshot.documents
           .map((documentSnapshot) => Note.fromMap(documentSnapshot.data))
           .toList();
- 
+
       setState(() {
         this.items = notes;
       });
     });
   }
- 
+
   @override
   void dispose() {
     noteSub?.cancel();
     super.dispose();
   }
- 
+
 
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
           child: ListView.builder(
@@ -117,7 +118,7 @@ class _ListViewNoteState extends State<ListViewNote> {
 
 
 
- 
+
   void _deleteNote(BuildContext context, Note note, int position) async {
     db.deleteNote(note.id).then((notes) {
       setState(() {
@@ -125,14 +126,14 @@ class _ListViewNoteState extends State<ListViewNote> {
       });
     });
   }
- 
+
   void _navigateToNote(BuildContext context, Note note) async {
     await Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => NoteScreen(note)),
     );
   }
- 
+
   void _createNewNote(BuildContext context) async {
     await Navigator.push(
       context,
