@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pureride/models/drive_info.dart';
+import 'package:pureride/ui/data_demo/listview_note.dart';
 import 'package:pureride/ui/screens/login_signup.dart';
 import 'package:pureride/ui/screens/offer.dart';
 import 'package:pureride/ui/screens/request.dart';
@@ -9,9 +10,6 @@ import 'package:pureride/utils/auth.dart';
 
 import '../../models/state.dart';
 import '../../state_widget.dart';
-
-import '../data_demo/note_screen.dart';
-import '../../models/note.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
