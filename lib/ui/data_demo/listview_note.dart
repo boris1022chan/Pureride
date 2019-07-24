@@ -23,7 +23,7 @@ class _ListViewNoteState extends State<ListViewNote> {
     super.initState();
  
     items = new List();
- 
+    // after the initial state, we have already got the posts
     noteSub?.cancel();
     noteSub = db.getNoteList().listen((QuerySnapshot snapshot) {
       final List<Note> notes = snapshot.documents
@@ -62,14 +62,14 @@ class _ListViewNoteState extends State<ListViewNote> {
                     Divider(height: 5.0),
                     ListTile(
                       title: Text(
-                        '${items[position].title}',
+                        '${items[position].destinationName}',
                         style: TextStyle(
                           fontSize: 22.0,
                           color: Colors.deepOrangeAccent,
                         ),
                       ),
                       subtitle: Text(
-                        '${items[position].description}',
+                        '${items[position].driver}',
                         style: new TextStyle(
                           fontSize: 18.0,
                           fontStyle: FontStyle.italic,
@@ -126,7 +126,7 @@ class _ListViewNoteState extends State<ListViewNote> {
   void _createNewNote(BuildContext context) async {
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => NoteScreen(Note(null, '', ''))),
+      MaterialPageRoute(builder: (context) => NoteScreen(Note(null, 'TNT', 'Jihua',DateTime.now(), 'xia0olin', ['a','b'], true))),
     );
   }
 }

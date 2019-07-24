@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
  
 class Note {
-  final String _id;
-  final String _destinationName;
-  final String _address;
-  final DateTime _departureTime;
-  final String _driver;
-  final List _taggerAlongers;
-  final bool _isOffer;
+  String _id;
+  String _destinationName;
+  String _address;
+  DateTime _departureTime;
+  String _driver;
+  List _taggerAlongers;
+  bool _isOffer;
 
 
 
