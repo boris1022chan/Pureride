@@ -7,7 +7,7 @@ final key = new GlobalKey<DepartTextState>();
 
 class RequestScreen extends StatelessWidget {
   static GlobalKey<FormState> formKey = new GlobalKey<FormState>();
-  String _name, _destination;
+  String _name, _email, _destination;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +35,17 @@ class RequestScreen extends StatelessWidget {
                         return "Not a valid name";
                       return null;
                     },
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Email:'
+                    ),
+                    validator: (input) {
+                      if (input.isEmpty || !input.contains('@'))
+                        return "Not a valid email";
+                      return null;
+                    },
+                    onSaved: (input) => _email = input,
                   ),
                   new Text('\n'),
                   Container(
