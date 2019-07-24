@@ -151,9 +151,9 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
     return FlatButton(
       child: _formMode == FormMode.LOGIN
           ? Text('Create an account',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300))
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300, color: Colors.grey))
           : Text('Have an account? Sign in',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300)),
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300, color: Colors.grey)),
       onPressed: _formMode == FormMode.LOGIN
           ? _changeFormToSignUp
           : _changeFormToLogin,
