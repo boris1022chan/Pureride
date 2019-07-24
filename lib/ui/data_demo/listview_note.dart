@@ -45,13 +45,7 @@ class _ListViewNoteState extends State<ListViewNote> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'grokonez Firestore Demo',
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('grokonez Firestore Demo'),
-          centerTitle: true,
-          backgroundColor: Colors.blue,
-        ),
         body: Center(
           child: ListView.builder(
               itemCount: items.length,
@@ -59,7 +53,7 @@ class _ListViewNoteState extends State<ListViewNote> {
               itemBuilder: (context, position) {
                 return Column(
                   children: <Widget>[
-                    Divider(height: 5.0),
+                    Divider(height: 5.0,color:Colors.black),
                     ListTile(
                       title: Text(
                         '${items[position].destinationName}',
