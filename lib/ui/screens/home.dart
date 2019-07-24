@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pureride/models/drive_info.dart';
+import 'package:pureride/ui/screens/offer.dart';
 import 'package:pureride/ui/screens/request.dart';
 import 'package:pureride/ui/theme.dart';
 import 'package:pureride/ui/widgets/AppBarTitle.dart';
@@ -45,10 +46,7 @@ class HomeScreenState extends State<HomeScreen>
     Widget buildAppBarTab(String str) {
       return Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Text(
-          str,
-          style: buildAppBarStyle(),
-        ),
+        child: Text(str),
       );
     }
 
@@ -56,7 +54,13 @@ class HomeScreenState extends State<HomeScreen>
         elevation: 2.0,
         title: AppBarTitle(),
         bottom: TabBar(
-          labelColor: Theme.of(context).indicatorColor,
+          labelStyle: TextStyle(
+            fontFamily: 'Roboto',
+            fontSize: 16.0,
+          ),
+          labelColor: Theme.of(context).tabBarTheme.labelColor,
+          unselectedLabelColor:
+              Theme.of(context).tabBarTheme.unselectedLabelColor,
           controller: _tabController,
           tabs: [
             buildAppBarTab("Drivers"),
@@ -71,7 +75,7 @@ class HomeScreenState extends State<HomeScreen>
         ? FloatingActionButton(
             shape: StadiumBorder(),
             onPressed: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => RequestScreen())),
+                MaterialPageRoute(builder: (context) => OfferScreen())),
             backgroundColor: appTheme.primaryColor,
             child: Icon(
               Icons.directions_car,
