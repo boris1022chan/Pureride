@@ -1,102 +1,15 @@
-import 'dart:math';
-import 'dart:typed_data';
-import 'package:intl/intl.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:pureride/ui/widgets/AppBarTitle.dart';
+import 'package:pureride/ui/widgets/departText.dart';
 
-final key = new GlobalKey<_DepartTextState>();
-
-class DepartText extends StatefulWidget {
-  DepartText({ Key key }) : super(key: key);
-  @override
-  _DepartTextState createState() => new _DepartTextState();
-}
-
-class _DepartTextState extends State<DepartText> {
-  TimeOfDay _time = new TimeOfDay.now();
-  DateTime _date = DateTime.now();
-  String _departText = "(Please select a date and time)";
-  TimeOfDay get departTime => _time;
-  DateTime get departDate => _date;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                child: Text(
-                  "Time of Departure: " + _departText,
-                ),
-              )
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new RaisedButton(
-                    child: new Text('Select Date'),
-                    onPressed: (){_selectDate(context);},
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new RaisedButton(
-                    child: new Text('Select Time'),
-                    onPressed: (){_selectTime(context);},
-                  ),
-                ),
-            ],)
-          ],
-        )
-      )
-    );
-  }
-
-  Future<Null> _selectDate(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
-      context: context,
-      initialDate: _date,
-      firstDate: DateTime(2015, 8),
-      lastDate: DateTime(2101)
-    );
-    if(picked != null && picked != _date){
-      _date = picked;
-      setState(() {
-        _departText = "${new DateFormat('yyyy-MM-dd').format(_date)}, ${MaterialLocalizations.of(context).formatTimeOfDay(_time)}";
-      });
-    }
-  }
-
-  Future<Null> _selectTime(BuildContext context) async {
-    final TimeOfDay picked = await showTimePicker(
-      context: context,
-      initialTime: _time
-    );
-    if(picked != null && picked != _time){
-      _time = picked;
-      setState(() {
-        _departText = "${new DateFormat('yyyy-MM-dd').format(_date)}, ${MaterialLocalizations.of(context).formatTimeOfDay(_time)}";
-      });
-    }
-  }
-}
+final key = new GlobalKey<DepartTextState>();
 
 class RequestScreen extends StatelessWidget {
   static GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   String _name, _destination;
   int _seatsAvailale;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,10 +36,11 @@ class RequestScreen extends StatelessWidget {
                   new Text('\n'),
                   Container(
                     height: 100,
-                    child: new DepartText()
+                    child: new DepartText(key: key)
                   ),
                   TextFormField(
                     inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: 'Available Seats:'
                     ),
@@ -163,6 +77,8 @@ class RequestScreen extends StatelessWidget {
   }
 
   void _submit(DateTime departDate, TimeOfDay departTime) {
+    print(departDate.toString());
+    print(departTime.toString());
     // TODO: Firestore writing
   }
 }
