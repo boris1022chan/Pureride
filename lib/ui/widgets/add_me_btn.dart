@@ -1,52 +1,68 @@
 import 'package:flutter/material.dart';
-
-Widget createAddMeButton(int id, BuildContext context) {
-  return FlatButton(
-    child: Icon(
-      Icons.person_add,
-      color: Colors.white,
-    ),
-    color: Color.fromRGBO(68, 153, 213, 1.0),
-    shape: CircleBorder(),
-    onPressed: () {
-      Scaffold.of(context).hideCurrentSnackBar();
-      final snackbar = SnackBar(content: Text('Added yourself!'));
-      Scaffold.of(context).showSnackBar(snackbar);
-    },
-  );
-}
+import 'package:pureride/models/state.dart';
+import 'package:pureride/state_widget.dart';
 
 class AddMeButton extends StatefulWidget {
-  final bool isSelected;
   final int id;
 
-  const AddMeButton({this.id, this.isSelected = false}) : super();
+  const AddMeButton({this.id}) : super();
 
   @override
-  _AddMeButtonState createState() => _AddMeButtonState(isSelected: isSelected);
+  _AddMeButtonState createState() => _AddMeButtonState(id: id);
 }
 
 class _AddMeButtonState extends State<AddMeButton> {
   bool isSelected = false;
+  int id;
   final Color selectedColor = Colors.red;
   final Color unselectedColor = Colors.blue;
 
-  _AddMeButtonState({this.isSelected});
+  _AddMeButtonState({this.id});
+
+  Function updateSelf(BuildContext context) {
+    void innerFn() {
+      int selectedId = StateWidget.of(context).state.selectedId;
+      if (this.id != selectedId) {
+        setState(() {
+          this.isSelected = false;
+        });
+      }
+    }
+
+    return innerFn;
+  }
 
   @override
   Widget build(BuildContext context) {
-    print(this.isSelected);
+    StateModel appState = StateWidget.of(context).state;
+    this.isSelected = (appState.selectedId == this.id);
+
+    appState.addMeSubscribers[this.id] = this.updateSelf(context);
+
     return FlatButton(
       child: Icon(
-        Icons.person_add,
+        this.isSelected ? Icons.person : Icons.person_add,
         color: Colors.white,
       ),
-      color: this.isSelected ? this.selectedColor : this.unselectedColor,
+      color: (this.id == appState.selectedId)
+          ? this.selectedColor
+          : this.unselectedColor,
       shape: CircleBorder(),
       onPressed: () {
-        setState(() => this.isSelected = !this.isSelected);
+        this.isSelected = !this.isSelected;
+        setState(() {
+          if (this.isSelected) {
+            appState.selectedId = this.id;
+          } else if (appState.selectedId == this.id) {
+            appState.selectedId = null; // declaim only if we had it
+          }
+          appState.updateAddMeSubscribers(); // deselect all others
+        });
         Scaffold.of(context).hideCurrentSnackBar();
-        final snackbar = SnackBar(content: Text(this.isSelected ? 'Added yourself as a rider' : 'Removed yourself as a rider' ));
+        final snackbar = SnackBar(
+            content: Text(this.isSelected
+                ? 'Added yourself as a rider'
+                : 'Removed yourself as a rider'));
         Scaffold.of(context).showSnackBar(snackbar);
       },
     );

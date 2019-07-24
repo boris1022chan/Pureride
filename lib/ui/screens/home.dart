@@ -114,7 +114,7 @@ class HomeScreenState extends State<HomeScreen>
       return _buildTabView(
           body: TabBarView(
         controller: _tabController,
-        children: <Widget>[            
+        children: <Widget>[
           //_buildDriverTab(),
           //_buildDriverTab(),
           ListViewNote(),
