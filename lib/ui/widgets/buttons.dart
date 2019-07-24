@@ -57,7 +57,7 @@ Widget createAddMeButton(int id, BuildContext context) {
     onPressed: () {
       Scaffold.of(context).hideCurrentSnackBar();
       final snackbar = SnackBar(
-        content: Text('Added yourself!'),
+        content: Text('Added yourself!')
       );
       Scaffold.of(context).showSnackBar(snackbar);
     },

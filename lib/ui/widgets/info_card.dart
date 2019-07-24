@@ -45,11 +45,13 @@ class InfoCard extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return new FullScreenInfoCard(
+                    return new Scaffold(
+                      body: FullScreenInfoCard(
                         id: id,
                         context: context,
-                        driveInfo: driveInfo,
-                        buttonBar: buttonBar);
+                        driveInfo: driveInfo
+                      )
+                    );
                   },
                 ),
               );
