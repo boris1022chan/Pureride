@@ -127,6 +127,7 @@ class OfferScreen extends StatelessWidget {
   void _submit(DateTime departDate, TimeOfDay departTime, BuildContext context) {
     if (formKey.currentState.validate()) {
       formKey.currentState.save();
+      /*
       print(departDate.toString());
       print(departTime.toString());
       print(_name);
@@ -135,7 +136,11 @@ class OfferScreen extends StatelessWidget {
       print(_meetingDetails);
       print(_description);
       print(_seatsAvailale);
-      
+      */
+      db.createNote( _destination, _destination, departDate, _name, [], true).then((_) {
+              //print('I hage received the info from DB');
+              Navigator.pop(context);
+            });
     }
 
     // TODO: Firestore writing
