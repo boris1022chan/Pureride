@@ -10,18 +10,22 @@ class NoteScreen extends StatefulWidget {
   State<StatefulWidget> createState() => new _NoteScreenState();
 }
  
+ 
 class _NoteScreenState extends State<NoteScreen> {
   FirebaseFirestoreService db = new FirebaseFirestoreService();
  
-  TextEditingController _titleController;
-  TextEditingController _descriptionController;
+  TextEditingController _destinationNameController;
+  TextEditingController _addressController;
+  TextEditingController _driverController;
  
   @override
   void initState() {
     super.initState();
  
-    _titleController = new TextEditingController(text: widget.note.title);
-    _descriptionController = new TextEditingController(text: widget.note.description);
+    _destinationNameController = new TextEditingController(text: widget.note.destinationName);
+    _addressController = new TextEditingController(text: widget.note.address);
+    _driverController = new TextEditingController(text: widget.note.driver);
+
   }
  
   @override
@@ -34,13 +38,18 @@ class _NoteScreenState extends State<NoteScreen> {
         child: Column(
           children: <Widget>[
             TextField(
-              controller: _titleController,
-              decoration: InputDecoration(labelText: 'Title'),
+              controller: _destinationNameController,
+              decoration: InputDecoration(labelText: 'destinationName'),
             ),
             Padding(padding: new EdgeInsets.all(5.0)),
             TextField(
-              controller: _descriptionController,
-              decoration: InputDecoration(labelText: 'Description'),
+              controller: _addressController,
+              decoration: InputDecoration(labelText: 'address'),
+            ),
+            Padding(padding: new EdgeInsets.all(5.0)),          
+            TextField(
+              controller: _driverController,
+              decoration: InputDecoration(labelText: 'driver'),
             ),
             Padding(padding: new EdgeInsets.all(5.0)),
             RaisedButton(
@@ -49,12 +58,12 @@ class _NoteScreenState extends State<NoteScreen> {
                 if (widget.note.id != null) {
                   db
                       .updateNote(
-                          Note(widget.note.id, _titleController.text, _descriptionController.text))
+                          Note(widget.note.id, _destinationNameController.text, _addressController.text, DateTime.now(), _driverController.text, widget.note.taggerAlongers, true))
                       .then((_) {
                     Navigator.pop(context);
                   });
                 } else {
-                  db.createNote(_titleController.text, _descriptionController.text).then((_) {
+                  db.createNote( _destinationNameController.text, _addressController.text, DateTime.now(), _driverController.text, [], true).then((_) {
                     Navigator.pop(context);
                   });
                 }

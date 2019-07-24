@@ -69,6 +69,7 @@ class HomeScreenState extends State<HomeScreen>
         ));
   }
 
+/*
   FloatingActionButton _buildFloatingButton() {
     return _tabController.index == 0
         ? FloatingActionButton(
@@ -91,12 +92,13 @@ class HomeScreenState extends State<HomeScreen>
             ),
           );
   }
+  */
 
   Scaffold _buildTabView({Widget body}) {
     return Scaffold(
       appBar: _buildAppBar(),
       body: body,
-      floatingActionButton: _buildFloatingButton(),
+      // floatingActionButton: _buildFloatingButton(),
     );
   }
 
@@ -115,8 +117,10 @@ class HomeScreenState extends State<HomeScreen>
           body: TabBarView(
         controller: _tabController,
         children: <Widget>[            
+          //_buildDriverTab(),
+          _buildDriverTab(),
           ListViewNote(),
-          ListViewNote(),
+          //ListViewNote(),
           ],
       ));
   }
@@ -197,6 +201,7 @@ class HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     appState = StateWidget.of(context).state;
     appTheme = Theme.of(context);
+    //return ListViewNote();
     return _buildContent();
   }
 }

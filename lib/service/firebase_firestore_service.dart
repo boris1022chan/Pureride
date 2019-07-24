@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pureride/models/note.dart';
 
 
-final CollectionReference noteCollection = Firestore.instance.collection('notes');
+final CollectionReference noteCollection = Firestore.instance.collection('posts');
  
 class FirebaseFirestoreService {
  
@@ -13,11 +13,11 @@ class FirebaseFirestoreService {
  
   FirebaseFirestoreService.internal();
  
-  Future<Note> createNote(String title, String description) async {
+  Future<Note> createNote(String destinationName, String address, DateTime departureTime, String driver, List list, bool isOffer ) async {
     final TransactionHandler createTransaction = (Transaction tx) async {
       final DocumentSnapshot ds = await tx.get(noteCollection.document());
  
-      final Note note = new Note(ds.documentID, title, description);
+      final Note note = new Note(ds.documentID, destinationName, address, departureTime, driver, list, isOffer );
       final Map<String, dynamic> data = note.toMap();
  
       await tx.set(ds.reference, data);
