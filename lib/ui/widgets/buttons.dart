@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
 import 'package:pureride/models/drive_info.dart';
+import 'package:pureride/ui/widgets/add_me_btn.dart';
 
 Align createButtonBar(id, context, email) {
   return Align(
@@ -10,7 +11,7 @@ Align createButtonBar(id, context, email) {
         child: new ButtonBar(
           alignment: MainAxisAlignment.end,
           children: <Widget>[
-            createAddMeButton(id, context),
+            AddMeButton(id: id),
             createMessageButton(id, context, email)
           ],
         ),
