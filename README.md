@@ -1,16 +1,22 @@
 # PureRide
 
-A ridesharing app for Genesys.
+PureRide is a ride-sharing mobile application created from Genesys interal hackathon. The idea stems from being unable to grab food outside the company as a coop who do not own a vehicle. As the team is comprised with mostly coops, we quickly resonate with the idea and want to create an application to connect coop with full-time employees who regularily go out for lunch.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Visuals
 
-A few resources to get you started if this is your first Flutter project:
+<img 
+  alt="screeshot"
+  src="./screenshot.png" 
+  width="250">
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Installation
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Follow flutter doc to install flutter (https://flutter.dev/docs/get-started/install)
+
+connect with an android device or open an android emulator
+```bash
+cd [project/pureride]
+flutter run
+```
+
